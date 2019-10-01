@@ -172,6 +172,10 @@ public class FPSController : MonoBehaviour
         } else if (other.tag == "Checkpoint")
         {
             other.GetComponent<Checkpoint>().EnableCheckpoint(this);
+        }else if(other.tag == "Platform")
+        {
+            transform.parent = other.transform;
+            other.GetComponent<PlatformDetector>().Move();
         }
     }
 
