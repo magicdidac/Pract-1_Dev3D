@@ -19,7 +19,7 @@ public abstract class Gun : MonoBehaviour
     [HideInInspector] protected float lastTime;
 
     [SerializeField] public float criticProb = .5f;
-    [SerializeField] public float criticMultiplier = .5f;
+    [SerializeField] public float criticMultiplier = 1.5f;
 
     protected void Start()
     {
@@ -27,7 +27,7 @@ public abstract class Gun : MonoBehaviour
         particlesSpawn = transform.GetChild(0);
 
         gunAmmo = maxLoader;
-        ammo = maxAmmo - maxLoader;
+        ammo = maxAmmo/2  - maxLoader;
     }
 
     public abstract void Shoot();

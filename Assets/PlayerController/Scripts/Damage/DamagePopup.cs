@@ -28,8 +28,12 @@ public class DamagePopup : MonoBehaviour
 
     public void Update()
     {
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(target.transform.position + offset);
-        transform.position = screenPosition;
+        try
+        {
+            Vector2 screenPosition = Camera.main.WorldToScreenPoint(target.transform.position + offset);
+            transform.position = screenPosition;
+        }
+        catch { Destroy(gameObject); }
     }
 
 }

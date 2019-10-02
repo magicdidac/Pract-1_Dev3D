@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public abstract class Pickable : MonoBehaviour
 {
-    protected void Start()
-    {
+    
 
+    protected virtual void Start()
+    {
         this.tag = "Pickable";
-        
     }
 
     public abstract void GetPickable(FPSController player);
+
+    
 
 }
