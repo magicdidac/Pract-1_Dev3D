@@ -176,6 +176,9 @@ public class FPSController : MonoBehaviour
         {
             transform.parent = other.transform;
             other.GetComponent<PlatformDetector>().Move();
+        }else if(other.tag == "DeadZone")
+        {
+            uiController.Dead();
         }
     }
 

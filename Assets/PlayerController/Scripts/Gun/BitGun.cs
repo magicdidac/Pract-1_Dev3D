@@ -45,7 +45,9 @@ public class BitGun : Gun
             {
                 //Critic counter
 
-                hit.collider.GetComponent<DamageZone>().ReviveDamage(damage);
+                int totalDamage = (int)(damage * ((Random.Range(0f, 1f) >= criticProb) ? Random.Range(minCriticMultiplier, maxCriticMultiplier) : 1));
+
+                hit.collider.GetComponent<DamageZone>().ReviveDamage(totalDamage);
                 
             }
             catch { }

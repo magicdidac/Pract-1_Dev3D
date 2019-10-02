@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint
   - Platform
   - Enemy
+  - DeadZone
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,8 @@ public abstract class Gun : MonoBehaviour
     [HideInInspector] protected float lastTime;
 
     [SerializeField] public float criticProb = .5f;
-    [SerializeField] public float criticMultiplier = 1.5f;
+    [SerializeField] public float minCriticMultiplier = 1.5f;
+    [SerializeField] public float maxCriticMultiplier = 2f;
 
     protected void Start()
     {

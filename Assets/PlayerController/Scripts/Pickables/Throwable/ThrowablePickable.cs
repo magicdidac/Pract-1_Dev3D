@@ -8,9 +8,8 @@ public abstract class ThrowablePickable : Pickable
     [HideInInspector] private Rigidbody rb;
     [SerializeField] private Collider col = null;
 
-    [HideInInspector] private bool checkRay = true;
-
-    [SerializeField] private float force;
+    [SerializeField] private float force = 1;
+    [SerializeField] private float maxDispersion = 2;
 
     protected override void Start()
     {
@@ -19,22 +18,14 @@ public abstract class ThrowablePickable : Pickable
         rb.isKinematic = false;
         rb.useGravity = true;
 
-        rb.AddForce(new Vector3(Random.Range(-5f, 5f), force, Random.Range(-5f, 5f)), ForceMode.Impulse);
+        rb.AddForce(new Vector3(Random.Range(-maxDispersion, maxDispersion), force, Random.Range(-maxDispersion, maxDispersion)), ForceMode.Impulse);
 
         col.enabled = false;
     }
 
     protected virtual void Update()
     {
-
-        if (!Physics.Raycast(transform.position, Vector3.down, .5f))
-        {
-            
-            rb.isKinematic = false;
-            rb.useGravity = true;
-        }
-
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < -0.1f)
             col.enabled = true;
         else
             col.enabled = false;
@@ -42,8 +33,9 @@ public abstract class ThrowablePickable : Pickable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Pickable")
+        if (collision.gameObject.tag == "Untagged")
         {
+            Debug.Log("oo");
             col.enabled = false;
             rb.isKinematic = true;
             rb.useGravity = false;

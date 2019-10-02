@@ -8,7 +8,6 @@ public class DamageZone : MonoBehaviour
     [SerializeField] private float damageMultiplier = 1;
     [SerializeField] private Damager dmg = null;
 
-
     public void ReviveDamage(int amount)
     {
         int damage = (int)(amount * damageMultiplier);
