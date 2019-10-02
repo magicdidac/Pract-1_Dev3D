@@ -11,10 +11,6 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private Material offMaterial = null;
     [SerializeField] private Material onMaterial = null;
 
-    [HideInInspector] public int shieldAmount = 0;
-    [HideInInspector] public int healthAmount = 0;
-    [HideInInspector] public int ammoAmount = 0;
-    [HideInInspector] public int loaderAmmoAmount = 0;
     [HideInInspector] public Quaternion playerRotation;
 
     private void Start()
@@ -36,10 +32,6 @@ public class Checkpoint : MonoBehaviour
 
         gm.checkpoint = this;
 
-        shieldAmount = player.dmgShield.shield;
-        healthAmount = player.dmgShield.health;
-        ammoAmount = player.gun.ammo;
-        loaderAmmoAmount = player.gun.gunAmmo;
         playerRotation = player.transform.rotation;
 
         if(Application.isEditor)
@@ -55,12 +47,8 @@ public class Checkpoint : MonoBehaviour
     public void SetPlayerStats()
     {
 
-        gm.player.dmgShield.shield = shieldAmount;
-        gm.player.dmgShield.health = healthAmount;
-        gm.player.gun.ammo = ammoAmount;
-        gm.player.gun.gunAmmo = loaderAmmoAmount;
-
-        gm.player.UpdateUIInformation();
+        gm.player.dmgShield.shield = gm.player.dmgShield.maxShield;
+        gm.player.dmgShield.health = gm.player.dmgShield.maxHealth;
 
         Invoke("ChangePosPlayer", 1f);
     }
@@ -69,7 +57,7 @@ public class Checkpoint : MonoBehaviour
     {
         gm.player.characterController.enabled = false;
         gm.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        gm.player.transform.rotation = playerRotation;
+        gm.player.transform.rotation = playerRotation; // Doesn't work
         gm.player.characterController.enabled = true;
 
         gm.uiController.ChangeFade();

@@ -5,14 +5,13 @@ using UnityEngine;
 public class DamagerWithShield : Damager
 {
 
-    [SerializeField] private int maxShield = 100;
+    [SerializeField] public int maxShield = 100;
     [HideInInspector] public int shield;
 
     private new void Start()
     {
         base.Start();
-        shield = 0;
-        gm.uiController.SetShield(shield);
+        shield = 100;
     }
 
     public void AddShield(int amount)
@@ -20,8 +19,6 @@ public class DamagerWithShield : Damager
         shield += amount;
         if (shield > maxShield)
             shield = maxShield;
-
-        gm.uiController.SetShield(shield);
     }
 
     public override void GetDammage(int amount)
@@ -44,13 +41,6 @@ public class DamagerWithShield : Damager
         }
         else if(health > 0)
             health -= amount;
-
-        gm.uiController.SetHealth(health);
-        gm.uiController.SetShield(shield);
-
-
-        if (health <= 0)
-            Dead();
 
     }
 

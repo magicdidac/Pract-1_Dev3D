@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
 
+        FloatingTextController.Initialize();
+
     }
 
     private void Start()

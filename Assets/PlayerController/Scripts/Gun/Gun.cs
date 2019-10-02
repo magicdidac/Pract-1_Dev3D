@@ -15,15 +15,16 @@ public abstract class Gun : MonoBehaviour
     [HideInInspector] protected Animator anim;
     [SerializeField] protected GameObject particles = null;
     [HideInInspector] protected Transform particlesSpawn;
-    [HideInInspector] protected UIController uiController;
 
     [HideInInspector] protected float lastTime;
+
+    [SerializeField] public float criticProb = .5f;
+    [SerializeField] public float criticMultiplier = .5f;
 
     protected void Start()
     {
         anim = GetComponent<Animator>();
         particlesSpawn = transform.GetChild(0);
-        uiController = GameManager.instance.uiController;
 
         gunAmmo = maxLoader;
         ammo = maxAmmo - maxLoader;
@@ -41,8 +42,6 @@ public abstract class Gun : MonoBehaviour
         ammo += ammount;
         if (ammo > maxAmmo)
             ammo = maxAmmo;
-
-        UpdateText();
     }
 
     protected void InstantiateParticles()
@@ -50,11 +49,6 @@ public abstract class Gun : MonoBehaviour
         GameObject part = Instantiate(particles, particlesSpawn.position, Quaternion.identity);
         part.transform.SetParent(transform);
         Destroy(part, .5f);
-    }
-
-    protected void UpdateText()
-    {
-        uiController.SetAmoText(gunAmmo, ammo);
     }
 
     public bool HaveMaxAmmo()

@@ -43,7 +43,10 @@ public class BitGun : Gun
         {
             try
             {
-                hit.collider.GetComponent<Damager>().GetDammage(damage);
+                //Critic counter
+
+                hit.collider.GetComponent<DamageZone>().ReviveDamage(damage);
+                
             }
             catch { }
         }
@@ -52,8 +55,6 @@ public class BitGun : Gun
 
         lastTime = Time.time;
         gunAmmo--;
-
-        UpdateText();
     }
 
     public override void Reload()
@@ -75,8 +76,6 @@ public class BitGun : Gun
         ammo -= maxLoader - gunAmmo;
         gunAmmo = maxLoader;
         reloading = false;
-
-        UpdateText();
     }
 
     

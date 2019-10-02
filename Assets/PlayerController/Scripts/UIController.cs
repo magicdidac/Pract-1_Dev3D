@@ -27,6 +27,21 @@ public class UIController : MonoBehaviour
         gm = GameManager.instance;
     }
 
+    private void Update()
+    {
+        RefreshPlayerStats();
+    }
+
+    private void RefreshPlayerStats()
+    {
+        SetHealth(gm.player.dmgShield.health);
+        SetShield(gm.player.dmgShield.shield);
+        SetAmoText(gm.player.gun.gunAmmo, gm.player.gun.ammo);
+
+        if (gm.player.dmgShield.health <= 0 && healthShieldInfoPanel.activeSelf)
+            Dead();
+
+    }
 
     public void SetAmoText(int ammo, int loaderAmmo)
     {
