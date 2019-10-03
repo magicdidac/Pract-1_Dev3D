@@ -6,11 +6,11 @@ public class ShieldPickable : Pickable
 {
     [SerializeField] private int shieldGive = 10;
 
-    public override void GetPickable(FPSController player)
+    protected override void GetPickable()
     {
-        if (!player.dmgShield.HaveMaxShield())
+        if (!gm.player.dmgShield.HaveMaxShield())
         {
-            player.dmgShield.AddShield(shieldGive);
+            gm.player.dmgShield.AddShield(shieldGive);
             Destroy(gameObject);
         }
     }

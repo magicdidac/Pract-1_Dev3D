@@ -9613,3 +9613,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae70d39467e3444285fff449f4a2413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getActionButton: 0
+  getPlayerAbove: 1

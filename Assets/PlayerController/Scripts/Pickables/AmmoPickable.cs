@@ -7,11 +7,11 @@ public class AmmoPickable : Pickable
 
     [SerializeField] private int ammoGive = 10;
 
-    public override void GetPickable(FPSController player)
+    protected override void GetPickable()
     {
-        if (player.haveGun && !player.gun.HaveMaxAmmo())
+        if (gm.player.haveGun && !gm.player.gun.HaveMaxAmmo())
         {
-            player.gun.AddAmmo(ammoGive);
+            gm.player.gun.AddAmmo(ammoGive);
             Destroy(gameObject);
         }
     }

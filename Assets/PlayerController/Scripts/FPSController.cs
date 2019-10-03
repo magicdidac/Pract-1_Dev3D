@@ -11,6 +11,7 @@ public class FPSController : MonoBehaviour
 
     [HideInInspector] private bool jumpInput;
     [HideInInspector] private bool runInput;
+    [HideInInspector] private bool actionInput;
     [HideInInspector] private Vector2 moveInput;
     [HideInInspector] private Vector2 lookInput;
 
@@ -42,6 +43,8 @@ public class FPSController : MonoBehaviour
     [HideInInspector] public DamagerWithShield dmgShield;
     [HideInInspector] public UIController uiController = null;
 
+    [SerializeField] private float maxActionDistance = 3;
+
     private void Start()
     {
         yaw = transform.rotation.eulerAngles.y;
@@ -55,6 +58,9 @@ public class FPSController : MonoBehaviour
 
         controls.Player.Run.performed += _ => runInput = true;
         controls.Player.Run.canceled += _ => runInput = false;
+
+        controls.Player.Action.performed += _ => actionInput = true;
+        controls.Player.Action.canceled += _ => actionInput = false;
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += _ => moveInput = Vector2.zero;
@@ -78,6 +84,28 @@ public class FPSController : MonoBehaviour
 
         if (Cursor.lockState != CursorLockMode.Locked)
             return;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxActionDistance))
+        {
+            if(hit.transform.tag == "Pickable" && hit.transform.GetComponent<Pickable>().getActionButton)
+                uiController.SetActionButton(true);
+
+            if (actionInput)
+            {
+                actionInput = false;
+
+                if (hit.transform.GetType() == typeof(Pickable))
+                {
+                    hit.transform.GetComponent<Pickable>().GetWithActionButton();
+                }
+            }
+        }
+        else
+        {
+            uiController.SetActionButton(false);
+        }
 
         /* LOOK */
         float axisY = -lookInput.y;
@@ -157,18 +185,18 @@ public class FPSController : MonoBehaviour
 
     }
 
-    public void UpdateUIInformation()
+    /*public void UpdateUIInformation()
     {
         uiController.SetShield(dmgShield.shield);
         uiController.SetHealth(dmgShield.health);
         uiController.SetAmoText(gun.gunAmmo, gun.ammo);
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Pickable")
         {
-            other.GetComponent<Pickable>().GetPickable(this);
+            other.GetComponent<Pickable>().GetWithTrigger();
         } else if (other.tag == "Checkpoint")
         {
             other.GetComponent<Checkpoint>().EnableCheckpoint(this);

@@ -35,7 +35,6 @@ public abstract class ThrowablePickable : Pickable
     {
         if (collision.gameObject.tag == "Untagged")
         {
-            Debug.Log("oo");
             col.enabled = false;
             rb.isKinematic = true;
             rb.useGravity = false;

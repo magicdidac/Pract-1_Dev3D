@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GunPickable : Pickable
 {
-    public override void GetPickable(FPSController player)
+    protected override void GetPickable()
     {
-        player.haveGun = true;
-        player.gun.gameObject.SetActive(true);
-        player.uiController.SetActiveGunInfo();
+        gm.player.haveGun = true;
+        gm.player.gun.gameObject.SetActive(true);
+        gm.player.uiController.SetActiveGunInfo();
         Destroy(gameObject);
     }
 }

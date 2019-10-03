@@ -9566,6 +9566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67f7d39a7f434a46a02735d17527731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getActionButton: 0
+  getPlayerAbove: 1
   healthGive: 10
 --- !u!1 &1795788469506095216
 GameObject:

@@ -52,6 +52,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "b236cc83-a41b-4758-84d1-a9767f6add2a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -217,6 +225,17 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6a7af11-63bb-4203-89d2-820b35a52347",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

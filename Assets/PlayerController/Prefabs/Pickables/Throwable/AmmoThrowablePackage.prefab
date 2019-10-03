@@ -9662,8 +9662,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717a7810c278bcb439746db7c495571c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getActionButton: 0
+  getPlayerAbove: 1
   col: {fileID: 7910017782742635615}
   force: 5
+  maxDispersion: 2
   ammoGive: 5
 --- !u!65 &7910017782742635615
 BoxCollider:

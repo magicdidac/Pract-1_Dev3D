@@ -18,6 +18,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image shieldSlider = null;
     [SerializeField] private TMP_Text shieldText = null;
 
+    [SerializeField] private GameObject actionInfo = null;
+
     [SerializeField] private Animator fade = null;
 
     [HideInInspector] private GameManager gm;
@@ -102,6 +104,12 @@ public class UIController : MonoBehaviour
     public void ChangeFade()
     {
         fade.SetTrigger("Change");
+    }
+    
+
+    public void SetActionButton(bool act)
+    {
+        actionInfo.SetActive(act);
     }
 
 }

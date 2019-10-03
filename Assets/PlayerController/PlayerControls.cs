@@ -64,6 +64,14 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Action"",
+                    ""type"": ""Button"",
+                    ""id"": ""b236cc83-a41b-4758-84d1-a9767f6add2a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -231,6 +239,17 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6a7af11-63bb-4203-89d2-820b35a52347"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -262,6 +281,7 @@ public class PlayerControls : IInputActionCollection
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_Action = m_Player.FindAction("Action", throwIfNotFound: true);
     }
 
     ~PlayerControls()
@@ -317,6 +337,7 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_Action;
     public struct PlayerActions
     {
         private PlayerControls m_Wrapper;
@@ -327,6 +348,7 @@ public class PlayerControls : IInputActionCollection
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        public InputAction @Action => m_Wrapper.m_Player_Action;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -354,6 +376,9 @@ public class PlayerControls : IInputActionCollection
                 Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                Action.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
+                Action.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
+                Action.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAction;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -376,6 +401,9 @@ public class PlayerControls : IInputActionCollection
                 Reload.started += instance.OnReload;
                 Reload.performed += instance.OnReload;
                 Reload.canceled += instance.OnReload;
+                Action.started += instance.OnAction;
+                Action.performed += instance.OnAction;
+                Action.canceled += instance.OnAction;
             }
         }
     }
@@ -397,5 +425,6 @@ public class PlayerControls : IInputActionCollection
         void OnRun(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnAction(InputAction.CallbackContext context);
     }
 }
