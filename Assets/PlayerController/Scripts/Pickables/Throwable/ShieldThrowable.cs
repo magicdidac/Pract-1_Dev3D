@@ -6,12 +6,14 @@ public class ShieldThrowable : ThrowablePickable
 {
     [SerializeField] private int shieldGive = 10;
 
-    protected override void GetPickable()
+    public override bool CanTakeIt()
     {
-        if (!gm.player.dmgShield.HaveMaxShield())
-        {
-            gm.player.dmgShield.AddShield(shieldGive);
-            Destroy(gameObject);
-        }
+        return !gm.player.dmgShield.HaveMaxShield();
+    }
+
+    protected override void NowGetPickable()
+    {
+        gm.player.dmgShield.AddShield(shieldGive);
+        Destroy(gameObject);
     }
 }

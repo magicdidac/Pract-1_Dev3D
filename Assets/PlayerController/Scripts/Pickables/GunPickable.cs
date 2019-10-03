@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class GunPickable : Pickable
 {
-    protected override void GetPickable()
+    public override bool CanTakeIt()
+    {
+        return !gm.player.haveGun;
+    }
+
+    protected override void NowGetPickable()
     {
         gm.player.haveGun = true;
         gm.player.gun.gameObject.SetActive(true);

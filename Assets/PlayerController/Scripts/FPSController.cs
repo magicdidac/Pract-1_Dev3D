@@ -89,23 +89,23 @@ public class FPSController : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxActionDistance))
         {
-            if(hit.transform.tag == "Pickable" && hit.transform.GetComponent<Pickable>().getActionButton)
+            if (hit.transform.GetComponent<Pickable>() != null && hit.transform.GetComponent<Pickable>().getActionButton)
+            {
                 uiController.SetActionButton(true);
 
-            if (actionInput)
-            {
-                actionInput = false;
-
-                if (hit.transform.GetType() == typeof(Pickable))
+                if (actionInput)
                 {
-                    hit.transform.GetComponent<Pickable>().GetWithActionButton();
+
+                    actionInput = false;
+
+                    if(hit.transform.GetComponent<Pickable>().CanTakeIt())
+                        hit.transform.GetComponent<Pickable>().GetWithActionButton();
                 }
-            }
+            }else
+                uiController.SetActionButton(false);
         }
         else
-        {
             uiController.SetActionButton(false);
-        }
 
         /* LOOK */
         float axisY = -lookInput.y;
@@ -194,7 +194,7 @@ public class FPSController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Pickable")
+        if(other.tag == "Pickable" && other.GetComponent<Pickable>().CanTakeIt())
         {
             other.GetComponent<Pickable>().GetWithTrigger();
         } else if (other.tag == "Checkpoint")

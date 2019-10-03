@@ -7,13 +7,15 @@ public class HealthPickable : Pickable
 
     [SerializeField] private int healthGive = 10;
 
-    protected override void GetPickable()
+    public override bool CanTakeIt()
     {
-        if (!gm.player.dmgShield.HaveMaxHealth())
-        {
-            gm.player.dmgShield.AddHealth(healthGive);
-            Destroy(gameObject);
-        }
+        return !gm.player.dmgShield.HaveMaxHealth();
+    }
+
+    protected override void NowGetPickable()
+    {
+        gm.player.dmgShield.AddHealth(healthGive);
+        Destroy(gameObject);
     }
 
 }

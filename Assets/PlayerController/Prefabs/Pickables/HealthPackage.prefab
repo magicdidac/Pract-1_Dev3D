@@ -9552,8 +9552,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.7, y: 0.4, z: 1.2}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!114 &821486534130687132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9566,8 +9566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67f7d39a7f434a46a02735d17527731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getActionButton: 0
-  getPlayerAbove: 1
+  getActionButton: 1
+  getPlayerAbove: 0
+  moveSpeed: 1
   healthGive: 10
 --- !u!1 &1795788469506095216
 GameObject:

@@ -9593,10 +9593,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4454443440759194131}
+  - component: {fileID: 3634319217320624714}
   - component: {fileID: 4454443440759194124}
   - component: {fileID: 4782968467838225391}
-  - component: {fileID: 3634319217320624714}
-  - component: {fileID: 7910017782742635615}
   m_Layer: 0
   m_Name: AmmoThrowablePackage
   m_TagString: Untagged
@@ -9621,6 +9620,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3634319217320624714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454443440759194125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a7810c278bcb439746db7c495571c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getActionButton: 1
+  getPlayerAbove: 1
+  moveSpeed: 1
+  force: 5
+  maxDispersion: 2
+  ammoGive: 5
 --- !u!65 &4454443440759194124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9632,8 +9649,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.7, y: 0.4, z: 1.2}
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!54 &4782968467838225391
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9650,34 +9667,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3634319217320624714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4454443440759194125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717a7810c278bcb439746db7c495571c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  getActionButton: 0
-  getPlayerAbove: 1
-  col: {fileID: 7910017782742635615}
-  force: 5
-  maxDispersion: 2
-  ammoGive: 5
---- !u!65 &7910017782742635615
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4454443440759194125}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.2, z: 1}
-  m_Center: {x: 0, y: 0.1, z: 0}

@@ -6,8 +6,8 @@ using UnityEngine;
 public abstract class ThrowablePickable : Pickable
 {
     [HideInInspector] private Rigidbody rb;
-    [SerializeField] private Collider col = null;
 
+    [Header("Throwable")]
     [SerializeField] private float force = 1;
     [SerializeField] private float maxDispersion = 2;
 
@@ -20,22 +20,30 @@ public abstract class ThrowablePickable : Pickable
 
         rb.AddForce(new Vector3(Random.Range(-maxDispersion, maxDispersion), force, Random.Range(-maxDispersion, maxDispersion)), ForceMode.Impulse);
 
-        col.enabled = false;
     }
 
     protected virtual void Update()
     {
+        if (goToPlayer)
+        {
+            triggerCol.enabled = false;
+            return;
+        }
+
         if (rb.velocity.y < -0.1f)
-            col.enabled = true;
+            triggerCol.isTrigger = false;
         else
-            col.enabled = false;
+            triggerCol.isTrigger = true;
 
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (goToPlayer)
+            return;
+
         if (collision.gameObject.tag == "Untagged")
         {
-            col.enabled = false;
+            triggerCol.isTrigger = true;
             rb.isKinematic = true;
             rb.useGravity = false;
         }
