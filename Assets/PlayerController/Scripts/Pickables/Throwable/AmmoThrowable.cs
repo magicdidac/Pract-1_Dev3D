@@ -8,7 +8,10 @@ public class AmmoThrowable : ThrowablePickable
 
     public override bool CanTakeIt()
     {
-        return gm.player.haveGun && !gm.player.gun.HaveMaxAmmo();
+        try
+        {
+            return gm.player.haveGun && !gm.player.gun.HaveMaxAmmo();
+        }catch { return false; }
     }
 
     protected override void NowGetPickable()

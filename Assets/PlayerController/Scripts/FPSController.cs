@@ -89,7 +89,7 @@ public class FPSController : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxActionDistance))
         {
-            if (hit.transform.GetComponent<Pickable>() != null && hit.transform.GetComponent<Pickable>().getActionButton)
+            if (hit.transform.GetComponent<Pickable>() != null && hit.transform.GetComponent<Pickable>().getActionButton && hit.transform.GetComponent<Pickable>().CanTakeIt())
             {
                 uiController.SetActionButton(true);
 
@@ -98,8 +98,7 @@ public class FPSController : MonoBehaviour
 
                     actionInput = false;
 
-                    if(hit.transform.GetComponent<Pickable>().CanTakeIt())
-                        hit.transform.GetComponent<Pickable>().GetWithActionButton();
+                    hit.transform.GetComponent<Pickable>().GetWithActionButton();
                 }
             }else
                 uiController.SetActionButton(false);

@@ -8,7 +8,11 @@ public class ShieldThrowable : ThrowablePickable
 
     public override bool CanTakeIt()
     {
-        return !gm.player.dmgShield.HaveMaxShield();
+        try
+        {
+            return !gm.player.dmgShield.HaveMaxShield();
+        }
+        catch { return false; }
     }
 
     protected override void NowGetPickable()

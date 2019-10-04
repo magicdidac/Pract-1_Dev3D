@@ -41,16 +41,21 @@ public class BitGun : Gun
 
         if (Physics.Raycast(cam.position, cam.forward, out hit))
         {
-            try
+            if (!hit.collider.isTrigger)
             {
-                //Critic counter
 
-                int totalDamage = (int)(damage * ((Random.Range(0f, 1f) >= criticProb) ? Random.Range(minCriticMultiplier, maxCriticMultiplier) : 1));
+                InstantiateDecal(hit.point, hit.normal, hit.transform);
 
-                hit.collider.GetComponent<DamageZone>().ReviveDamage(totalDamage);
-                
+                try
+                {
+
+                    int totalDamage = (int)(damage * ((Random.Range(0f, 1f) >= criticProb) ? Random.Range(minCriticMultiplier, maxCriticMultiplier) : 1));
+
+                    hit.collider.GetComponent<DamageZone>().ReviveDamage(totalDamage);
+
+                }
+                catch { }
             }
-            catch { }
         }
 
         InstantiateParticles();

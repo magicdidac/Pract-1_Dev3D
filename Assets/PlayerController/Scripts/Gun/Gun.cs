@@ -22,6 +22,8 @@ public abstract class Gun : MonoBehaviour
     [SerializeField] public float minCriticMultiplier = 1.5f;
     [SerializeField] public float maxCriticMultiplier = 2f;
 
+    [SerializeField] private GameObject bulletHoleDecal = null;
+
     protected void Start()
     {
         anim = GetComponent<Animator>();
@@ -34,6 +36,22 @@ public abstract class Gun : MonoBehaviour
     public abstract void Shoot();
 
     public abstract void Reload();
+
+    protected void InstantiateDecal(Vector3 position, Vector3 normal, Transform transform)
+    {
+        GameObject decal = Instantiate(bulletHoleDecal, position, Quaternion.LookRotation(normal), transform);
+
+        decal.transform.eulerAngles = new Vector3(decal.transform.eulerAngles.x, decal.transform.eulerAngles.y, Random.Range(0f, 359.99f));
+
+        SetGlobalScale(decal.transform, decal.transform.localScale);
+
+    }
+
+    public static void SetGlobalScale(Transform transform, Vector3 globalScale)
+    {
+        transform.localScale = Vector3.one;
+        transform.localScale = new Vector3(globalScale.x / transform.lossyScale.x, globalScale.y / transform.lossyScale.y, globalScale.z / transform.lossyScale.z);
+    }
 
     public void AddAmmo(int ammount)
     {

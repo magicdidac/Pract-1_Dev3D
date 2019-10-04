@@ -8,7 +8,10 @@ public class HealthThrowable : ThrowablePickable
 
     public override bool CanTakeIt()
     {
-        return !gm.player.dmgShield.HaveMaxHealth();
+        try {
+            return !gm.player.dmgShield.HaveMaxHealth();
+        }
+        catch { return false; }
     }
 
     protected override void NowGetPickable()
