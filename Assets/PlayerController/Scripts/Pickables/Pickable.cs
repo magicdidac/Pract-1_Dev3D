@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Pickable : MonoBehaviour
+public abstract class Pickable : InteractableObject
 {
-    [SerializeField] public bool getActionButton = false;
     [SerializeField] protected bool getPlayerAbove = true;
     [HideInInspector] protected bool goToPlayer = false;
     [SerializeField] private float moveSpeed = 1;
@@ -14,6 +13,7 @@ public abstract class Pickable : MonoBehaviour
 
     protected virtual void Start()
     {
+        this.selfType = Type.Pickable;
         this.tag = "Pickable";
         triggerCol = GetComponent<Collider>();
         gm = GameManager.instance;
@@ -27,12 +27,14 @@ public abstract class Pickable : MonoBehaviour
 
     protected abstract void NowGetPickable();
 
-    public abstract bool CanTakeIt();
-
-    public void GetWithActionButton()
+    public override void Interact()
     {
-        if (getActionButton)
-            GetPickable();
+        GetPickable();
+    }
+
+    public override bool CanInteractIt()
+    {
+        return true;
     }
 
     public void GetWithTrigger()

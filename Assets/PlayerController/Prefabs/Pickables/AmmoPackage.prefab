@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4929656557700097389}
   - component: {fileID: 4929656557700097394}
   - component: {fileID: 4929656557700097388}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AmmoPackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e182c56585265e84a8f84e2ecddd5f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getActionButton: 1
+  canInteract: 1
+  selfType: 0
   getPlayerAbove: 1
   moveSpeed: 1
   ammoGive: 5

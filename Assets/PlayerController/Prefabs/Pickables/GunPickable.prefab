@@ -9519,7 +9519,7 @@ GameObject:
   - component: {fileID: 8285640915042025341}
   - component: {fileID: 8285640915360226764}
   - component: {fileID: 5984725197208401650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunPickable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9613,7 +9613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae70d39467e3444285fff449f4a2413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getActionButton: 1
+  canInteract: 1
+  selfType: 0
   getPlayerAbove: 0
   moveSpeed: 1
-  triggerCol: {fileID: 8285640915360226764}

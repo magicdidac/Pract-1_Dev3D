@@ -9595,7 +9595,7 @@ GameObject:
   - component: {fileID: 5926191725978356217}
   - component: {fileID: 5926191725978356198}
   - component: {fileID: 2993959325697853984}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShieldPackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9644,7 +9644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df06606b82d16e47a3d3d3bb360eeeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getActionButton: 1
+  canInteract: 1
+  selfType: 0
   getPlayerAbove: 0
   moveSpeed: 1
   shieldGive: 5

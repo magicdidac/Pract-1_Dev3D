@@ -6,11 +6,11 @@ public class AmmoThrowable : ThrowablePickable
 {
     [SerializeField] private int ammoGive = 10;
 
-    public override bool CanTakeIt()
+    public override bool CanInteractIt()
     {
         try
         {
-            return gm.player.haveGun && !gm.player.gun.HaveMaxAmmo();
+            return base.CanInteractIt() && gm.player.haveGun && !gm.player.gun.HaveMaxAmmo();
         }catch { return false; }
     }
 

@@ -6,11 +6,11 @@ public class ShieldThrowable : ThrowablePickable
 {
     [SerializeField] private int shieldGive = 10;
 
-    public override bool CanTakeIt()
+    public override bool CanInteractIt()
     {
         try
         {
-            return !gm.player.dmgShield.HaveMaxShield();
+            return base.CanInteractIt() && !gm.player.dmgShield.HaveMaxShield();
         }
         catch { return false; }
     }

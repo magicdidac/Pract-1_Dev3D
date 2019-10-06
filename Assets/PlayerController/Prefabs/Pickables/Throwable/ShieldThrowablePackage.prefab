@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 6040747441691705473}
   - component: {fileID: 2529727666844473404}
   - component: {fileID: 918143687240681356}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShieldThrowablePackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4879,7 +4879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f21d3511c56cc4aa92fcc72f2e2928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getActionButton: 1
+  canInteract: 1
+  selfType: 0
   getPlayerAbove: 0
   moveSpeed: 1
   force: 5

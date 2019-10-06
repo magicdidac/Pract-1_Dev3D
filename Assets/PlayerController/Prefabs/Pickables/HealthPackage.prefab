@@ -9517,7 +9517,7 @@ GameObject:
   - component: {fileID: 1795788468818708937}
   - component: {fileID: 1795788468818708950}
   - component: {fileID: 821486534130687132}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealthPackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9566,7 +9566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67f7d39a7f434a46a02735d17527731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getActionButton: 1
+  canInteract: 1
+  selfType: 0
   getPlayerAbove: 0
   moveSpeed: 1
   healthGive: 10

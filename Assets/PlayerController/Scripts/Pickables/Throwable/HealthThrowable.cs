@@ -6,10 +6,10 @@ public class HealthThrowable : ThrowablePickable
 {
     [SerializeField] private int healthGive = 10;
 
-    public override bool CanTakeIt()
+    public override bool CanInteractIt()
     {
         try {
-            return !gm.player.dmgShield.HaveMaxHealth();
+            return base.CanInteractIt() && !gm.player.dmgShield.HaveMaxHealth();
         }
         catch { return false; }
     }

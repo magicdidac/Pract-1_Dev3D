@@ -2,18 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : InteractableObject
 {
-    [SerializeField] protected bool isOpened = false;
 
+    [HideInInspector] protected bool isOpened = false;
+
+    [Header("Door")]
     [SerializeField] protected Vector3 openPositiom = Vector3.zero;
-    [HideInInspector] protected Vector3 closePositiom = Vector3.zero;
+    [HideInInspector] protected Vector3 closePosition = Vector3.zero;
 
     [SerializeField] protected float speed = 2;
 
-    private void Start()
+    [HideInInspector] protected Transform door;
+
+    protected virtual void Start()
     {
-        closePositiom = transform.position;
+        this.selfType = Type.Door;
+        this.door = transform.GetChild(0);
+        closePosition = door.localPosition;
     }
 
     public virtual void UseDoor()
@@ -23,29 +29,43 @@ public class Door : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isOpened && transform.position != closePositiom + openPositiom)
-            transform.position = Vector3.MoveTowards(transform.position, closePositiom + openPositiom, speed);
-        else if (!isOpened && transform.position != closePositiom)
-            transform.position = Vector3.MoveTowards(transform.position, closePositiom, speed);
+        if (isOpened && door.localPosition != closePosition + openPositiom)
+            door.localPosition = Vector3.MoveTowards(door.localPosition, closePosition + openPositiom, speed * Time.deltaTime);
+        else if (!isOpened && door.localPosition != closePosition)
+            door.localPosition = Vector3.MoveTowards(door.localPosition, closePosition, speed * Time.deltaTime);
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
+        if (door == null)
+            door = transform.GetChild(0);
+
+        if (!Application.isPlaying)
+            closePosition = door.localPosition;
+
+        Gizmos.matrix = transform.localToWorldMatrix;
+
         Gizmos.color = new Color(0, 255, 0, .5f);
 
-        Gizmos.DrawCube(transform.position, transform.localScale * 1.1f);
+        Gizmos.DrawCube(closePosition, door.localScale * 1.1f);
 
         if (openPositiom == Vector3.zero)
             return;
 
         Gizmos.color = new Color(255, 0, 0, .5f);
 
-        if (closePositiom == Vector3.zero)
-            closePositiom = transform.position;
 
-        Gizmos.DrawCube(closePositiom + openPositiom, transform.localScale + (Vector3.forward * 0.3f));
+        Gizmos.DrawCube(closePosition + openPositiom, door.localScale * 1.1f);
 
     }
 
+    public override bool CanInteractIt()
+    {
+        return true;
+    }
 
+    public override void Interact()
+    {
+        UseDoor();
+    }
 }

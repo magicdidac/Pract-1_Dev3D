@@ -9596,7 +9596,7 @@ GameObject:
   - component: {fileID: 3634319217320624714}
   - component: {fileID: 4454443440759194124}
   - component: {fileID: 4782968467838225391}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AmmoThrowablePackage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9632,7 +9632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717a7810c278bcb439746db7c495571c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  getActionButton: 1
+  canInteract: 1
+  selfType: 0
   getPlayerAbove: 1
   moveSpeed: 1
   force: 5

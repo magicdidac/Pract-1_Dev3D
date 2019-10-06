@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GunPickable : Pickable
 {
-    public override bool CanTakeIt()
+    public override bool CanInteractIt()
     {
-        return !gm.player.haveGun;
+        return base.CanInteractIt() && !gm.player.haveGun;
     }
 
     protected override void NowGetPickable()
