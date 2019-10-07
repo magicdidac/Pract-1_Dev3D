@@ -43,6 +43,7 @@ public class Door : InteractableObject
         if (!Application.isPlaying)
             closePosition = door.localPosition;
 
+
         Gizmos.matrix = transform.localToWorldMatrix;
 
         Gizmos.color = new Color(0, 255, 0, .5f);

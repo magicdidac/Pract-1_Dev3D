@@ -2,17 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyDoor : MonoBehaviour
+public class KeyDoor : InterctableDoor
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private Key key = null;
+
+    [HideInInspector] private bool isKeyCollected = false;
+
+
+    protected override void Start()
     {
-        
+        base.Start();
+        key.SetDoor(this);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override bool CanInteractIt()
     {
-        
+        return isKeyCollected;
+    }
+
+    public void KeyCollected()
+    {
+        isKeyCollected = true;
+    }
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+
+        Gizmos.color = Color.black;
+
+        Gizmos.matrix = Matrix4x4.identity;
+
+        if(door != null)
+            Gizmos.DrawLine(transform.position, key.transform.position);
+
     }
 }

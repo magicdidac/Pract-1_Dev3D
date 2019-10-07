@@ -30,7 +30,7 @@ public class TriggerDetection
         {
             player.uiController.Dead();
         }
-        else if (other.tag == "Door")
+        else if (other.tag == "Door" && other.GetComponent<AutomaticDoor>() != null)
         {
             other.GetComponent<InteractableObject>().Interact();
         }
@@ -43,7 +43,7 @@ public class TriggerDetection
 
     public void TriggerExit(Collider other)
     {
-        if (other.tag == "Door")
+        if (other.tag == "Door" && other.GetComponent<AutomaticDoor>() != null)
         {
             other.GetComponent<InteractableObject>().Interact();
         }

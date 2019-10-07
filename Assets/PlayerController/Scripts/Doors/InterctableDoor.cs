@@ -9,9 +9,7 @@ public class InterctableDoor : Door
         base.Start();
         BoxCollider b = gameObject.AddComponent<BoxCollider>();
         b.size = door.localScale;
-        b.isTrigger = false;
-
-        //door.gameObject.layer = 9;
+        b.isTrigger = true;
 
     }
 }
