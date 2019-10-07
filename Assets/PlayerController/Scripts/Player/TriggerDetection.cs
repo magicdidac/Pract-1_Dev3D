@@ -21,10 +21,13 @@ public class TriggerDetection
         {
             other.GetComponent<Checkpoint>().EnableCheckpoint(player);
         }
-        else if (other.tag == "Platform")
+        else if (other.GetComponent<PlatformDetector>() != null)
         {
             player.transform.parent = other.transform;
-            other.GetComponent<PlatformDetector>().Move();
+
+            if(other.GetComponent<PlatformDetector>().IsPlayerRequired())
+                other.GetComponent<PlatformDetector>().Move();
+
         }
         else if (other.tag == "DeadZone")
         {
@@ -43,7 +46,16 @@ public class TriggerDetection
 
     public void TriggerExit(Collider other)
     {
-        if (other.tag == "Door" && other.GetComponent<AutomaticDoor>() != null)
+        if(other.GetComponent<PlatformDetector>())
+        {
+            PlatformDetector plat = other.GetComponent<PlatformDetector>();
+
+            if (plat.BackToStart())
+                plat.Move();
+
+            player.transform.parent = null;
+        }
+        else if (other.tag == "Door" && other.GetComponent<AutomaticDoor>() != null)
         {
             other.GetComponent<InteractableObject>().Interact();
         }

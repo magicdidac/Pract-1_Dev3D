@@ -20,12 +20,14 @@ public class PlatformDetector : MonoBehaviour
             nextPos = plat.NextPos();
     }
 
-    private void OnTriggerExit(Collider other)
+    public bool IsPlayerRequired()
     {
-        if (plat.isActiveAndEnabled && plat.backToStart)
-            nextPos = plat.NextPos();
+        return plat.isPlayerRequired;
+    }
 
-        transform.GetChild(0).parent = null;
+    public bool BackToStart()
+    {
+        return plat.backToStart;
     }
 
     private void FixedUpdate()

@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Platform : MonoBehaviour
 {
 
     [HideInInspector] public Vector3 initialPos;
-    [SerializeField] private Vector3[] nextPos = null;
     [HideInInspector] private Vector3 oldPos;
-    [SerializeField] public float speed = 1;
-    [SerializeField] public bool isPlayerRequired = true;
-    [SerializeField] public bool backToStart = true;
-    [SerializeField] public float waitTime = .5f;
+    [HideInInspector] public Vector3[] nextPos;
+    [HideInInspector] public float speed = 1;
+    [HideInInspector] public bool isPlayerRequired;
+    [HideInInspector] public bool backToStart;
+    [HideInInspector] public float waitTime = .5f;
 
     [HideInInspector] private Transform platform;
     [HideInInspector] private int nextIndexPos = 0;
@@ -19,8 +20,6 @@ public class Platform : MonoBehaviour
     private void Awake()
     {
         platform = transform.GetChild(0);
-        platform.tag = "Platform";
-
 
         initialPos = platform.position;
         oldPos = platform.position;
@@ -59,7 +58,12 @@ public class Platform : MonoBehaviour
         if (nextPos == null)
             return;
 
-        Vector3 oldPos = platform.position;
+        Vector3 oldPos;
+
+        if (!Application.isPlaying)
+            oldPos = platform.position;
+        else
+            oldPos = this.initialPos;
 
         if (!isPlayerRequired)
         {
