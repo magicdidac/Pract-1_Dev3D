@@ -38,7 +38,6 @@ public class InteractableObjectDetection
             return;
         }
 
-        //Debug.Log(hit.transform.name);
         InteractableObject io = hit.transform.GetComponent<InteractableObject>();
 
         if (io.CanInteractIt())
