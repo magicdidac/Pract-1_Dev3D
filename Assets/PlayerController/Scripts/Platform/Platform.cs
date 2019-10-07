@@ -8,7 +8,7 @@ public class Platform : MonoBehaviour
 
     [HideInInspector] public Vector3 initialPos;
     [HideInInspector] private Vector3 oldPos;
-    [HideInInspector] public Vector3[] nextPos;
+    [HideInInspector] public List<Transform> nextPos = new List<Transform>();
     [HideInInspector] public float speed = 1;
     [HideInInspector] public bool isPlayerRequired;
     [HideInInspector] public bool backToStart;
@@ -28,7 +28,7 @@ public class Platform : MonoBehaviour
 
     public Vector3 NextPos()
     {
-        if(nextIndexPos >= nextPos.Length)
+        if(nextIndexPos >= nextPos.Count)
         {
             nextIndexPos = 0;
             oldPos = initialPos;
@@ -36,7 +36,7 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            oldPos += nextPos[nextIndexPos];
+            oldPos = nextPos[nextIndexPos].position;
             nextIndexPos++;
             return oldPos;
         }
@@ -54,8 +54,8 @@ public class Platform : MonoBehaviour
         Gizmos.DrawCube(platform.position, platform.localScale * 1.1f);
 
         Gizmos.color = new Color(255, 0, 0, .5f);
-
-        if (nextPos == null)
+        
+        if (nextPos == null || nextPos.Count == 0)
             return;
 
         Vector3 oldPos;
@@ -67,15 +67,27 @@ public class Platform : MonoBehaviour
 
         if (!isPlayerRequired)
         {
-            foreach (Vector3 pos in nextPos)
+            foreach (Transform t in nextPos)
             {
-                Gizmos.DrawCube(oldPos + pos, platform.localScale);
-                oldPos += pos;
+                Gizmos.color = Color.black;
+                Gizmos.DrawLine(oldPos, t.position);
+                Gizmos.color = new Color(255, 0, 0, .5f);
+                Gizmos.DrawCube(t.position, platform.localScale);
+                oldPos = t.position;
             }
         }
         else
         {
-            Gizmos.DrawCube(oldPos + nextPos[0], platform.localScale);
+            if(nextPos[0] == null)
+            {
+                nextPos = new List<Transform>();
+                return;
+            }
+
+            Gizmos.color = Color.black;
+            Gizmos.DrawLine(oldPos, nextPos[0].position);
+            Gizmos.color = new Color(255, 0, 0, .5f);
+            Gizmos.DrawCube(nextPos[0].position, platform.localScale);
         }
 
     }
