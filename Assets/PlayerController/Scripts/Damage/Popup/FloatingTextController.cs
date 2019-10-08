@@ -5,6 +5,7 @@ using UnityEngine;
 public class FloatingTextController : MonoBehaviour
 {
     private static DamagePopup popupText;
+    private static EnemyLifeBar popupEnemyLifeBar;
     private static GameObject canvas;
     private static Camera uiCamera;
 
@@ -14,6 +15,9 @@ public class FloatingTextController : MonoBehaviour
         uiCamera = GameObject.Find("UICamera").GetComponent<Camera>();
         if(!popupText)
             popupText = Resources.Load<DamagePopup>("Prefabs/PopupTextParent");
+
+        if (!popupEnemyLifeBar)
+            popupEnemyLifeBar = Resources.Load<EnemyLifeBar>("Prefabs/EnemyLifeBar");
     }
 
     public static void CreateFloatingText(string text, GameObject location)
@@ -27,6 +31,16 @@ public class FloatingTextController : MonoBehaviour
         instance.transform.SetParent(canvas.transform, false);
         instance.transform.position = screenPosition;
         instance.SetText(text);
+
+    }
+
+    public static void CreateEnemyLifeBar(EnemyDamager dmgr)
+    {
+        EnemyLifeBar instance = Instantiate(popupEnemyLifeBar);
+
+        instance.dmgr = dmgr;
+
+        dmgr.lifeBar = instance.gameObject;
 
     }
 

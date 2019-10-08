@@ -10,6 +10,8 @@ public class EnemyDamager : Damager
     [SerializeField] private GameObject healthPickable = null;
     [SerializeField] private GameObject shieldPickable = null;
 
+    [HideInInspector] public GameObject lifeBar = null;
+
     public override void GetDammage(int amount)
     {
         health -= amount;
@@ -36,9 +38,6 @@ public class EnemyDamager : Damager
         {
             Instantiate(pickable, transform.position, Quaternion.identity);
         }
-
-
-
     }
 
 }
