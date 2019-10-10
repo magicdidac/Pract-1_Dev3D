@@ -271,5 +271,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeBar: {fileID: 2054441572945212243}
-  offset: {x: 0, y: 3, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   dmgr: {fileID: 0}

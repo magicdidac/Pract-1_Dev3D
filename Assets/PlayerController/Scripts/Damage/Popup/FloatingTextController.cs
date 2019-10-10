@@ -34,14 +34,4 @@ public class FloatingTextController : MonoBehaviour
 
     }
 
-    public static void CreateEnemyLifeBar(EnemyDamager dmgr)
-    {
-        EnemyLifeBar instance = Instantiate(popupEnemyLifeBar);
-
-        instance.dmgr = dmgr;
-
-        dmgr.lifeBar = instance.gameObject;
-
-    }
-
 }
