@@ -9807,47 +9807,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 576516395960816005, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: maxActionDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 576516395960816005, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: interactibleLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 576516395960816005, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: interactableLayer.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 4483862951949018644, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4483862951949018644, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4483862951949018644, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 269171466177362964, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: bulletHoleDecal
-      value: 
-      objectReference: {fileID: 3714122209165257253, guid: cc524eb5dfa4aea428f1373b9524593d,
-        type: 3}
-    - target: {fileID: 576516397746821161, guid: 00c2d564979a3054aadefe8fe689ccb1,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 535
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c2d564979a3054aadefe8fe689ccb1, type: 3}
 --- !u!1 &1294746830
