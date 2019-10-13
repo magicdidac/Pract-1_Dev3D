@@ -11,7 +11,6 @@ public class Idle_ES : AState
 
     protected  override void DoStart()
     {
-        Debug.Log(self.name + " changed state to " + this.GetType(), self.gameObject);
     }
 
     public override void DoUpdate()

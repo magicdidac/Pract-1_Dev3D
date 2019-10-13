@@ -6,7 +6,6 @@ public class Die_ES : AState
 {
     public Die_ES(EnemyStateMachine self) : base(self)
     {
-        Debug.Log(self.name + " changed state to " + this.GetType(), self.gameObject);
     }
 
     protected  override void DoStart()

@@ -11,7 +11,6 @@ public class Hit_ES : AState
         this.oldState = oldState;
         self.recievedCritical = false;
         self.recievedDamage = false;
-        Debug.Log(self.name + " changed state to " + this.GetType(), self.gameObject);
     }
 
     protected  override void DoStart()

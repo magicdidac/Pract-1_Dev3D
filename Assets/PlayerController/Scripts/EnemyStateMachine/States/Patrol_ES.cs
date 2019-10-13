@@ -18,7 +18,6 @@ public class Patrol_ES : AState
 
     protected  override void DoStart()
     {
-        Debug.Log(self.name + " changed state to " + this.GetType(), self.gameObject);
     }
 
     public override void DoUpdate()
@@ -28,7 +27,7 @@ public class Patrol_ES : AState
 
     public override void DoFixedUpdate()
     {
-        self.transform.position = Vector3.MoveTowards(self.transform.position, nextPost, self.speed * Time.deltaTime);
+        self.transform.position = Vector3.MoveTowards(self.transform.position, nextPost, self.speed * Time.deltaTime); // Esto se cambiará para hacerlo con el nav mesh
     }
 
     public override void DoExit()
