@@ -50,6 +50,8 @@ public class Door : InteractableObject
 
         Gizmos.DrawCube(closePosition, door.localScale * 1.1f);
 
+        //Gizmos.DrawMesh(door.GetComponent<MeshFilter>().mesh, transform.position);
+
         if (openPositiom == Vector3.zero)
             return;
 
