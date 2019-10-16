@@ -17,9 +17,9 @@ public class KeyDoor : InterctableDoor
 
     }
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
-        return isKeyCollected;
+        return (isKeyCollected) ? new InteractMessage("Use", true) : new InteractMessage("Need a key");
     }
 
     public void KeyCollected()

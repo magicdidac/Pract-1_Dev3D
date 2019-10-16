@@ -32,11 +32,6 @@ public abstract class Pickable : InteractableObject
         GetPickable();
     }
 
-    public override bool CanInteractIt()
-    {
-        return true;
-    }
-
     public void GetWithTrigger()
     {
         if (getPlayerAbove)

@@ -34,30 +34,18 @@ public class InteractableObjectDetection
         if (hit.transform == null) //Check if really hit
         {
             // gm.uiController.SetCantActionButton(false);
-            gm.uiController.SetActionButton(false);
+            gm.uiController.DesactiveActionInfo();
             return;
         }
 
         InteractableObject io = hit.transform.GetComponent<InteractableObject>();
 
-        if (io.CanInteractIt())
+        gm.uiController.ActiveActionInfo(io.GetInteractMessage());
+
+        if (io.GetInteractMessage().canInteract && player.actionInput)
         {
-            //gm.uiController.SetCantActionButton(false);
-            gm.uiController.SetActionButton(true);
-
-            // if action button was pressed interact with
-
-            if (player.actionInput)
-            {
-                player.actionInput = false;
-                io.Interact();
-            }
-
-        }
-        else
-        {
-            //gm.uiController.SetCantActionButton(true);
-            gm.uiController.SetActionButton(false);
+            player.actionInput = false;
+            io.Interact();
         }
 
     }

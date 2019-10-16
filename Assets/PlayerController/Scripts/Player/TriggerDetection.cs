@@ -13,7 +13,7 @@ public class TriggerDetection
 
     public void TriggerEnter(Collider other)
     {
-        if (other.tag == "Pickable" && other.GetComponent<Pickable>().CanInteractIt())
+        if (other.tag == "Pickable" && other.GetComponent<Pickable>().GetInteractMessage().canInteract)
         {
             other.GetComponent<Pickable>().GetWithTrigger();
         }

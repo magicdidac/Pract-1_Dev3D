@@ -6,12 +6,12 @@ public class HealthThrowable : ThrowablePickable
 {
     [SerializeField] private int healthGive = 10;
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
         try {
-            return base.CanInteractIt() && !gm.player.dmgShield.HaveMaxHealth();
+            return (!gm.player.dmgShield.HaveMaxHealth()) ? new InteractMessage() : new InteractMessage("Health full");
         }
-        catch { return false; }
+        catch { return new InteractMessage("Health full"); }
     }
 
     protected override void NowGetPickable()

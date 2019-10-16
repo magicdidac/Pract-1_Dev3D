@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : InteractableObject
+public abstract class Door : InteractableObject
 {
 
     [HideInInspector] protected bool isOpened = false;
@@ -50,8 +50,6 @@ public class Door : InteractableObject
 
         Gizmos.DrawCube(closePosition, door.localScale * 1.1f);
 
-        //Gizmos.DrawMesh(door.GetComponent<MeshFilter>().mesh, transform.position);
-
         if (openPositiom == Vector3.zero)
             return;
 
@@ -60,11 +58,6 @@ public class Door : InteractableObject
 
         Gizmos.DrawCube(closePosition + openPositiom, door.localScale * 1.1f);
 
-    }
-
-    public override bool CanInteractIt()
-    {
-        return true;
     }
 
     public override void Interact()

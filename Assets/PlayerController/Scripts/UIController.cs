@@ -18,7 +18,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image shieldSlider = null;
     [SerializeField] private TMP_Text shieldText = null;
 
-    [SerializeField] private GameObject actionInfo = null;
+    [SerializeField] private GameObject enableActionInfo = null;
+    [SerializeField] private TMP_Text enableActionText = null;
+    [SerializeField] private GameObject unableActionInfo = null;
+    [SerializeField] private TMP_Text unableActionText = null;
 
     [SerializeField] private Animator fade = null;
 
@@ -107,9 +110,28 @@ public class UIController : MonoBehaviour
     }
     
 
-    public void SetActionButton(bool act)
+    public void ActiveActionInfo(InteractMessage i)
     {
-        actionInfo.SetActive(act);
+        if (i.canInteract)
+        {
+            enableActionInfo.SetActive(false);
+            enableActionInfo.SetActive(true);
+            enableActionText.text = i.message;
+        }
+        else if (i.message != "")
+        {
+            enableActionInfo.SetActive(false);
+            unableActionInfo.SetActive(true);
+            unableActionText.text = i.message;
+        }
+        else
+            DesactiveActionInfo();
+    }
+
+    public void DesactiveActionInfo()
+    {
+        enableActionInfo.SetActive(false);
+        unableActionInfo.SetActive(false);
     }
 
 }

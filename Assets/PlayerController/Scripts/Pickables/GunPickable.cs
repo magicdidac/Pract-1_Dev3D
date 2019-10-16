@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GunPickable : Pickable
 {
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
-        return base.CanInteractIt() && !gm.player.haveGun;
+        return (!gm.player.haveGun) ? new InteractMessage() : new InteractMessage("Inventory full");
     }
 
     protected override void NowGetPickable()

@@ -6,13 +6,13 @@ public class ShieldThrowable : ThrowablePickable
 {
     [SerializeField] private int shieldGive = 10;
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
         try
         {
-            return base.CanInteractIt() && !gm.player.dmgShield.HaveMaxShield();
+            return (!gm.player.dmgShield.HaveMaxShield()) ? new InteractMessage() : new InteractMessage("Shield full");
         }
-        catch { return false; }
+        catch { return new InteractMessage("Shield full"); }
     }
 
     protected override void NowGetPickable()

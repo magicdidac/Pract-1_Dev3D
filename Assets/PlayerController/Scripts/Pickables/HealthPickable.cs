@@ -7,9 +7,9 @@ public class HealthPickable : Pickable
 
     [SerializeField] private int healthGive = 10;
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
-        return base.CanInteractIt() && !gm.player.dmgShield.HaveMaxHealth();
+        return (!gm.player.dmgShield.HaveMaxHealth()) ? new InteractMessage() : new InteractMessage("Health full");
     }
 
     protected override void NowGetPickable()

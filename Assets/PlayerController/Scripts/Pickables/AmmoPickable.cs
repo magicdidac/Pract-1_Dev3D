@@ -7,9 +7,9 @@ public class AmmoPickable : Pickable
 
     [SerializeField] private int ammoGive = 10;
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
-        return base.CanInteractIt() && gm.player.haveGun && !gm.player.gun.HaveMaxAmmo();
+        return (gm.player.haveGun && !gm.player.gun.HaveMaxAmmo()) ? new InteractMessage() : new InteractMessage("Ammo full");
     }
 
     protected override void NowGetPickable()

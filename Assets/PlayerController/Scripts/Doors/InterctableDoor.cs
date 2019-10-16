@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class InterctableDoor : Door
 {
+    public override InteractMessage GetInteractMessage()
+    {
+        return new InteractMessage("Open", true);
+    }
+
     protected override void Start()
     {
         base.Start();

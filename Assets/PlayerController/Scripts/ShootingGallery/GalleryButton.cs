@@ -8,9 +8,9 @@ public class GalleryButton : InteractableObject
     [SerializeField] public bool canInteract = true;
     [SerializeField] private ShootingGallery gallery = null;
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
-        return canInteract;
+        return (canInteract) ? new InteractMessage("Activate", true) : new InteractMessage("Wait...");
     }
 
     public override void Interact()

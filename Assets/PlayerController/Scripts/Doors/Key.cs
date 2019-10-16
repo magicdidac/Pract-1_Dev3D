@@ -6,6 +6,11 @@ public class Key : Pickable
 {
     [HideInInspector] private KeyDoor door;
 
+    public override InteractMessage GetInteractMessage()
+    {
+        return new InteractMessage();
+    }
+
     public void SetDoor(KeyDoor door)
     {
         this.door = door;

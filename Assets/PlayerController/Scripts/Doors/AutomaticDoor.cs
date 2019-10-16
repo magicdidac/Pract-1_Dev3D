@@ -19,9 +19,9 @@ public class AutomaticDoor : Door
 
     }
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
-        return false;
+        return new InteractMessage(false);
     }
 
     protected override void OnDrawGizmos()

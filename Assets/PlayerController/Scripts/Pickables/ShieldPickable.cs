@@ -6,9 +6,9 @@ public class ShieldPickable : Pickable
 {
     [SerializeField] private int shieldGive = 10;
 
-    public override bool CanInteractIt()
+    public override InteractMessage GetInteractMessage()
     {
-        return base.CanInteractIt() && !gm.player.dmgShield.HaveMaxShield();
+        return (!gm.player.dmgShield.HaveMaxShield()) ? new InteractMessage() : new InteractMessage("Shield full");
     }
 
     protected override void NowGetPickable()

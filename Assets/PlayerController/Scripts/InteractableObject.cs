@@ -10,7 +10,7 @@ public abstract class InteractableObject : MonoBehaviour
     [HideInInspector] protected Type selfType = Type.Pickable;
 
 
-    public abstract bool CanInteractIt();
+    public abstract InteractMessage GetInteractMessage();
 
     public abstract void Interact();
 
