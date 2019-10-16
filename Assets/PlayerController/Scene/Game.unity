@@ -2896,6 +2896,11 @@ PrefabInstance:
       propertyPath: backToStart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8661451988376487974, guid: eddec62004ca4db40b5481223850c683,
+        type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8661451986640679654, guid: eddec62004ca4db40b5481223850c683,
         type: 3}
       propertyPath: m_LocalScale.x
