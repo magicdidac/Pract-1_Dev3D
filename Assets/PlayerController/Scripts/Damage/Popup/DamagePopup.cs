@@ -8,7 +8,7 @@ public class DamagePopup : MonoBehaviour
     [HideInInspector] private Animator anim;
     [HideInInspector] private TMP_Text damageText;
 
-    [HideInInspector] public GameObject target;
+    [HideInInspector] public Vector3 target;
 
     [HideInInspector] public Vector3 offset;
 
@@ -30,7 +30,7 @@ public class DamagePopup : MonoBehaviour
     {
         try
         {
-            Vector2 screenPosition = Camera.main.WorldToScreenPoint(target.transform.position + offset);
+            Vector2 screenPosition = Camera.main.WorldToScreenPoint(target + offset);
             transform.position = screenPosition;
         }
         catch { Destroy(gameObject); }
