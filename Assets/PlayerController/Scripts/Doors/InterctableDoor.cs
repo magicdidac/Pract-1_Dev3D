@@ -6,7 +6,7 @@ public class InterctableDoor : Door
 {
     public override InteractMessage GetInteractMessage()
     {
-        return new InteractMessage("Open", true);
+        return new InteractMessage("Use", true);
     }
 
     protected override void Start()
