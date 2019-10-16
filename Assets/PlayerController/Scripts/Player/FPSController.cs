@@ -181,5 +181,11 @@ public class FPSController : MonoBehaviour
         triggerDetection.TriggerExit(other);
     }
 
+    public void TeleportTo(Vector3 position)
+    {
+        characterController.enabled = false;
+        transform.position = position;
+        characterController.enabled = true;
+    }
 
 }

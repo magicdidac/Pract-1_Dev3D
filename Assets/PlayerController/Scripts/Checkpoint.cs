@@ -55,10 +55,12 @@ public class Checkpoint : MonoBehaviour
 
     private void ChangePosPlayer()
     {
-        gm.player.characterController.enabled = false;
+        gm.player.TeleportTo(transform.position);
+
+        /*gm.player.characterController.enabled = false;
         gm.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         gm.player.transform.rotation = playerRotation; // Doesn't work
-        gm.player.characterController.enabled = true;
+        gm.player.characterController.enabled = true;*/
 
         gm.uiController.ChangeFade();
     }
