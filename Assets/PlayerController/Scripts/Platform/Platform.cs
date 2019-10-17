@@ -21,8 +21,8 @@ public class Platform : MonoBehaviour
     {
         platform = transform.GetChild(0);
 
-        initialPos = platform.position;
-        oldPos = platform.position;
+        initialPos = platform.localPosition;
+        oldPos = platform.localPosition;
     }
 
 
@@ -36,7 +36,7 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            oldPos = nextPos[nextIndexPos].position;
+            oldPos = nextPos[nextIndexPos].localPosition;
             nextIndexPos++;
             return oldPos;
         }
@@ -48,7 +48,7 @@ public class Platform : MonoBehaviour
         if (platform == null)
             platform = transform.GetChild(0);
 
-
+        
         Gizmos.color = new Color(0, 255, 0, .5f);
 
         Gizmos.DrawCube(platform.position, platform.localScale * 1.1f);
@@ -69,8 +69,6 @@ public class Platform : MonoBehaviour
         {
             foreach (Transform t in nextPos)
             {
-                Gizmos.color = Color.black;
-                Gizmos.DrawLine(oldPos, t.position);
                 Gizmos.color = new Color(255, 0, 0, .5f);
                 Gizmos.DrawCube(t.position, platform.localScale);
                 oldPos = t.position;
@@ -84,8 +82,6 @@ public class Platform : MonoBehaviour
                 return;
             }
 
-            Gizmos.color = Color.black;
-            Gizmos.DrawLine(oldPos, nextPos[0].position);
             Gizmos.color = new Color(255, 0, 0, .5f);
             Gizmos.DrawCube(nextPos[0].position, platform.localScale);
         }

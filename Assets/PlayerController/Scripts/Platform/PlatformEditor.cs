@@ -40,14 +40,9 @@ public class PlatformEditor : Editor
         showPoints = EditorGUILayout.Foldout(showPoints, "Platform Points");
         EditorGUILayout.Space();
 
-        if (GUILayout.Button("+", EditorStyles.miniButtonLeft))
+        if (GUILayout.Button("-", EditorStyles.miniButtonLeft))
         {
-            GameObject g = new GameObject();
-            g.name = "Point" + Format(p.nextPos.Count);
-            g.transform.parent = p.transform;
-            g.transform.localPosition = new Vector3(1.5f, 1, 1.5f);
-            p.nextPos.Add(g.transform);
-            Selection.activeGameObject = g;
+            DeletePoint(p.nextPos.Count - 1);
         }
 
         GUI.enabled = p.nextPos.Count > 0;
@@ -66,9 +61,14 @@ public class PlatformEditor : Editor
             p.nextPos.Clear();
         }
 
-        if (GUILayout.Button("-", EditorStyles.miniButtonRight))
+        if (GUILayout.Button("+", EditorStyles.miniButtonRight))
         {
-            DeletePoint(p.nextPos.Count - 1);
+            GameObject g = new GameObject();
+            g.name = "Point" + Format(p.nextPos.Count);
+            g.transform.parent = p.transform;
+            g.transform.localPosition = new Vector3(1.5f, 1, 1.5f);
+            p.nextPos.Add(g.transform);
+            Selection.activeGameObject = g;
         }
 
         GUI.enabled = true;

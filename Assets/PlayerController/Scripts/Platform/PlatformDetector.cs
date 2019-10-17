@@ -11,7 +11,7 @@ public class PlatformDetector : MonoBehaviour
     private void Start()
     {
         plat = transform.parent.GetComponent<Platform>();
-        nextPos = (plat.isPlayerRequired)? transform.position : plat.NextPos();
+        nextPos = (plat.isPlayerRequired)? transform.localPosition : plat.NextPos();
     }
 
     public void Move()
@@ -32,11 +32,12 @@ public class PlatformDetector : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(nextPos != transform.position && Time.time > nextTime)
+
+        if(nextPos != transform.localPosition && Time.time > nextTime)
         {
-            transform.position = Vector3.MoveTowards(transform.position, nextPos, plat.speed * Time.deltaTime);
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, nextPos, plat.speed * Time.deltaTime);
         }
-        else if(nextPos == transform.position && !plat.isPlayerRequired)
+        else if(nextPos == transform.localPosition && !plat.isPlayerRequired)
         {
             nextTime = Time.time + plat.waitTime;
             nextPos = plat.NextPos();
