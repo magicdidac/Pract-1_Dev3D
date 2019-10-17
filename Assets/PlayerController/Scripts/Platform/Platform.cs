@@ -21,8 +21,8 @@ public class Platform : MonoBehaviour
     {
         platform = transform.GetChild(0);
 
-        initialPos = platform.localPosition;
-        oldPos = platform.localPosition;
+        initialPos = platform.position;
+        oldPos = initialPos;
     }
 
 
@@ -36,7 +36,7 @@ public class Platform : MonoBehaviour
         }
         else
         {
-            oldPos = nextPos[nextIndexPos].localPosition;
+            oldPos = nextPos[nextIndexPos].position;
             nextIndexPos++;
             return oldPos;
         }

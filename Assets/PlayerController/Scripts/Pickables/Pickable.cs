@@ -43,11 +43,12 @@ public abstract class Pickable : InteractableObject
         if (goToPlayer)
         {
             transform.position = Vector3.MoveTowards(transform.position, gm.player.transform.position, moveSpeed);
-
-            if (transform.position == gm.player.transform.position)
+            
+            if (Utility.CompareVectors3(transform.position, gm.player.transform.position))
                 NowGetPickable();
         }
     }
 
+    
 
 }
