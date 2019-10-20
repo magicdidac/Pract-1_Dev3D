@@ -30,4 +30,9 @@ public abstract class AState
 
     public abstract AState ChangeState();
 
+    public override string ToString()
+    {
+        return this.GetType()+"";
+    }
+
 }
