@@ -71,9 +71,7 @@ public class Dissolve : MonoBehaviour
 
     }
 
-    public void Dissappear() {
-        isDisappearing = true;
-    }
+    public void Dissappear() => isDisappearing = true;
 
     public void Appear() => isDisappearing = false;
 

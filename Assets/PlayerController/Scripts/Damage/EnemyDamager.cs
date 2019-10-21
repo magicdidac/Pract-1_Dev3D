@@ -10,26 +10,20 @@ public class EnemyDamager : Damager
     [SerializeField] private GameObject ammoPickable = null;
     [SerializeField] private GameObject healthPickable = null;
     [SerializeField] private GameObject shieldPickable = null;
+    [SerializeField] private MeshRenderer render = null;
 
-    [SerializeField] private Image lifeBar = null;
-    [SerializeField] private Image lifeBarColor = null;
-    [SerializeField] private Image lifeBarWhite = null;
-    [SerializeField] private float lifeBarOffsetY = 0;
+    [HideInInspector] private EnemyLifeBar lifeBar = null;
+    [HideInInspector] public EnemyStateMachine self;
 
-    [SerializeField] private RectTransform lifeBarCanvas = null;
+    [HideInInspector] public bool isDead = false;
 
-    [HideInInspector] private bool invisible = false;
-
-    public override void GetDammage(int amount)
+    public override void GetDamage(int amount)
     {
         health -= amount;
-
-        if (health <= 0)
-            Die();
-
+        self.recievedCritical = true;
     }
 
-    private void Die()
+    public void Die()
     {
         SpawnPickable(-1, 3, ammoPickable);
         SpawnPickable(1, 2, healthPickable);
@@ -44,37 +38,28 @@ public class EnemyDamager : Damager
 
         for (int i = 0; i < rngNumber; i++)
         {
-            Instantiate(pickable, transform.position, Quaternion.identity);
+            Instantiate(pickable, render.transform.position, Quaternion.identity);
         }
     }
 
     private void Update()
     {
-        if ((transform.position - GameManager.instance.player.transform.position).magnitude < 7 && !invisible)
+        if (lifeBar != null && isDead)
         {
-            lifeBarWhite.fillAmount = (Vector2.MoveTowards(new Vector2(lifeBarWhite.fillAmount, 0), new Vector2(lifeBarColor.fillAmount, 0), .5f * Time.deltaTime)).x;
-            lifeBarColor.fillAmount = (float)health / maxHealth;
-            UpdateLifeBarPosition();
+            Destroy(lifeBar.gameObject);
+            lifeBar = null;
         }
-        else
-            lifeBar.gameObject.SetActive(false);
-    }
 
-    private void UpdateLifeBarPosition()
-    {
-        lifeBar.gameObject.SetActive(true);
-        Vector3 l_ViewportPoint = Camera.main.WorldToViewportPoint(transform.position + Vector3.up * lifeBarOffsetY);
-        lifeBar.rectTransform.anchoredPosition = new Vector3(l_ViewportPoint.x * lifeBarCanvas.sizeDelta.x, - (1.0f - l_ViewportPoint.y) * lifeBarCanvas.sizeDelta.y, 0.0f);
-    }
+        if (isDead)
+            return;
 
-    private void OnBecameInvisible()
-    {
-        invisible = true;
-    }
+        if (lifeBar == null && render.isVisible && Vector3.Distance(transform.position, gm.player.transform.position) < 15)
+            lifeBar = FloatingTextController.CreateFloatingBar(this, transform.position);
+        else if(lifeBar != null && (!render.isVisible || Vector3.Distance(transform.position, gm.player.transform.position) >= 15)){
+            Destroy(lifeBar.gameObject);
+            lifeBar = null;
+        }
 
-    private void OnWillRenderObject()
-    {
-        invisible = false;
     }
 
 }

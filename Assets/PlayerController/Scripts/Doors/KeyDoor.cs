@@ -35,7 +35,7 @@ public class KeyDoor : InterctableDoor
 
         Gizmos.matrix = Matrix4x4.identity;
 
-        if(door != null)
+        if(door != null && key != null)
             Gizmos.DrawLine(transform.position, key.transform.position);
 
     }

@@ -15,7 +15,8 @@ public class Hit_ES : AState
 
     protected  override void DoStart()
     {
-        
+        self.agent.isStopped = true;
+        self.agent.ResetPath();
     }
 
 
@@ -27,29 +28,7 @@ public class Hit_ES : AState
 
     public override void DoFixedUpdate()
     {
-        if (Time.time - startTime > 1)
-        {
-            switch (oldState)
-            {
-
-                case Alert_ES t:
-                    self.currentState = new Alert_ES(self);
-                    break;
-                case Attack_ES t:
-                    self.currentState = new Attack_ES(self);
-                    break;
-                case Chase_ES t:
-                    self.currentState = new Chase_ES(self);
-                    break;
-                case Idle_ES t:
-                    self.currentState = new Idle_ES(self);
-                    break;
-                case Patrol_ES t:
-                    self.currentState = new Alert_ES(self);
-                    break;
-
-            }
-        }
+        
     }
 
     public override void DoExit()
@@ -59,6 +38,28 @@ public class Hit_ES : AState
 
     public override AState ChangeState()
     {
+        if (self.damager.health <= 0)
+            return new Die_ES(self);
+
+        if (Time.time - startTime > .5f)
+        {
+            switch (oldState)
+            {
+
+                case Alert_ES t:
+                    return new Alert_ES(self);
+                case Attack_ES t:
+                    return new Attack_ES(self);
+                case Chase_ES t:
+                    return new Chase_ES(self);
+                case Idle_ES t:
+                    return new Idle_ES(self);
+                case Patrol_ES t:
+                    return new Alert_ES(self);
+
+            }
+        }
+
         return null;
     }
 

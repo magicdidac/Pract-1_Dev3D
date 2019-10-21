@@ -23,7 +23,7 @@ public class AutoGun : Gun
         {
             try
             {
-                hit.collider.GetComponent<Damager>().GetDammage(damage);
+                hit.collider.GetComponent<Damager>().GetDamage(damage);
             }
             catch { }
         }

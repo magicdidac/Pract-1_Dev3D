@@ -5,15 +5,10 @@ using UnityEngine;
 public class Patrol_ES : AState
 {
 
-    private Vector3 nextPost;
-
     public Patrol_ES(EnemyStateMachine self) : base(self)
     {
-        /*nextPost = self.positions[self.posIndex];
-        if (self.posIndex + 1 >= self.positions.Count)
-            self.posIndex = 0;
-        else
-            self.posIndex++;*/
+        self.agent.isStopped = false;
+        self.agent.SetDestination(self.GetNextPosition());
     }
 
     protected  override void DoStart()
@@ -27,7 +22,7 @@ public class Patrol_ES : AState
 
     public override void DoFixedUpdate()
     {
-        //self.transform.position = Vector3.MoveTowards(self.transform.position, nextPost, self.speed * Time.deltaTime); // Esto se cambiará para hacerlo con el nav mesh
+        
     }
 
     public override void DoExit()
@@ -37,7 +32,10 @@ public class Patrol_ES : AState
 
     public override AState ChangeState()
     {
-        /*if (self.recievedCritical || self.recievedDamage)
+        if (self.damager.health <= 0)
+            return new Die_ES(self);
+
+        if (self.recievedCritical || self.recievedDamage)
             return new Hit_ES(self, this);
 
         if (self.listenPlayer)
@@ -46,9 +44,9 @@ public class Patrol_ES : AState
             return new Alert_ES(self);
         }
 
-        if (self.transform.position == nextPost)
+        if (!self.agent.pathPending && self.agent.remainingDistance < .5f)
             return new Idle_ES(self);
-            */
+
         return null;
     }
 }

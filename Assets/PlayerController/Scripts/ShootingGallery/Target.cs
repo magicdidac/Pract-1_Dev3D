@@ -10,7 +10,7 @@ public class Target : Damager
     [SerializeField] private Animation anim = null;
     [HideInInspector] public TMP_Text text = null;
 
-    public override void GetDammage(int amount)
+    public override void GetDamage(int amount)
     {
 
         health = 0;

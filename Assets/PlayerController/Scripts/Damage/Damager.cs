@@ -18,7 +18,7 @@ public class Damager : MonoBehaviour
         gm = GameManager.instance;
     }
 
-    public virtual void GetDammage(int amount)
+    public virtual void GetDamage(int amount)
     {
         health -= amount;
     }

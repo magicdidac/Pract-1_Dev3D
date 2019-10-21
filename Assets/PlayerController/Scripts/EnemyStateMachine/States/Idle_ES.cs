@@ -30,6 +30,9 @@ public class Idle_ES : AState
 
     public override AState ChangeState()
     {
+        if (self.damager.health <= 0)
+            return new Die_ES(self);
+
         if (Time.time - startTime > 1)
             return new Patrol_ES(self);
 

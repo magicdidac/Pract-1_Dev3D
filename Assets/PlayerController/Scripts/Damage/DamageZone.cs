@@ -11,7 +11,7 @@ public class DamageZone : MonoBehaviour
     public virtual void ReviveDamage(int amount, Vector3 hitPoint)
     {
         int damage = (int)(amount * damageMultiplier);
-        dmg.GetDammage(damage);
+        dmg.GetDamage(damage);
         FloatingTextController.CreateFloatingText(damage.ToString(), hitPoint);
     }
 

@@ -10,6 +10,6 @@ public class TargetDamageZone : DamageZone
         if(dmg.health > 0)
             FloatingTextController.CreateFloatingText("HIT", hitPoint);
 
-        dmg.GetDammage(amount);
+        dmg.GetDamage(amount);
     }
 }

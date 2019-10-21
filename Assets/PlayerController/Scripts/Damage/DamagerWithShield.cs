@@ -21,7 +21,7 @@ public class DamagerWithShield : Damager
             shield = maxShield;
     }
 
-    public override void GetDammage(int amount)
+    public override void GetDamage(int amount)
     {
         if (shield > 0)
         {

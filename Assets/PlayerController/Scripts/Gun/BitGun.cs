@@ -15,7 +15,7 @@ public class BitGun : Gun
 
         cam = Camera.main.transform;
 
-        controls = transform.parent.parent.GetComponent<FPSController>().controls;
+        controls = transform.parent.parent.parent.GetComponent<FPSController>().controls;
 
         controls.Player.Fire.performed += _ => Shoot();
         controls.Player.Reload.performed += _ => Reload();
@@ -43,18 +43,12 @@ public class BitGun : Gun
         {
             if (!hit.collider.isTrigger)
             {
-
-                InstantiateDecal(hit.point, hit.normal, hit.transform);
+                
 
                 try
                 {
-
-                    int totalDamage = (int)(damage * ((Random.Range(0f, 1f) >= criticProb) ? Random.Range(minCriticMultiplier, maxCriticMultiplier) : 1));
-
-                    hit.collider.GetComponent<DamageZone>().ReviveDamage(totalDamage, hit.point);
-
-                }
-                catch { }
+                    hit.collider.GetComponent<DamageZone>().ReviveDamage(damage, hit.point);
+                } catch { InstantiateDecal(hit.point, hit.normal, hit.transform); }
             }
         }
 

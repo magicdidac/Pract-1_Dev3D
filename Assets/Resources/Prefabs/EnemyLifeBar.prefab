@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2054441573091345642
 RectTransform:
   m_ObjectHideFlags: 0
@@ -271,5 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeBar: {fileID: 2054441572945212243}
-  offset: {x: 0, y: 0, z: 0}
+  lifeBarWhite: {fileID: 2054441573091345641}
+  offset: {x: 0, y: 3, z: 0}
   dmgr: {fileID: 0}

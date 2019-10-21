@@ -13,7 +13,7 @@ public class MoveTarget : Damager
     [HideInInspector] public TMP_Text text = null;
     [HideInInspector] private Vector3 maxPos = Vector3.zero;
 
-    public override void GetDammage(int amount)
+    public override void GetDamage(int amount)
     {
         if(health > 0)
         {

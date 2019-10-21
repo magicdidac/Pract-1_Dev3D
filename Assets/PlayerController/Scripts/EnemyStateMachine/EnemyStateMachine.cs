@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateMachine : MonoBehaviour
 {
@@ -33,28 +34,50 @@ public class EnemyStateMachine : MonoBehaviour
 
     [SerializeField] public bool listenPlayer = false;
     [SerializeField] public bool seePlayer = false;
+    [SerializeField] public bool directCastPlayer = false;
 
-    [SerializeField] public List<Vector3> positions = new List<Vector3>();
-    [HideInInspector] public int posIndex = 0;
-    [SerializeField] public float speed = 5;
+    [SerializeField] public float minChaseDistance = 2;
+    [SerializeField] public float maxChaseDistance = 8;
+    [SerializeField] public float maxAttackDistance = 5;
+    [SerializeField] private int damage = 30; 
 
+    [SerializeField] public GameObject bullet = null;
+    [SerializeField] public Dissolve dissolveModel = null;
+    [Space]
+    [SerializeField] public List<Transform> positions = new List<Transform>();
+
+
+    [HideInInspector] public Vector3 initialPos;
+    [HideInInspector] public int posIndex;
 
     [HideInInspector] private FieldOfView fow;
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public EnemyDamager damager;
 
+
+    [HideInInspector] public Transform player;
 
     private void Start()
     {
         fow = GetComponent<FieldOfView>();
+        agent = GetComponent<NavMeshAgent>();
+        damager = GetComponent<EnemyDamager>();
+        damager.self = this;
+
+        player = GameManager.instance.player.transform;
+
+        initialPos = transform.position;
+        posIndex = -1;
 
         currentState = new Patrol_ES(this);
-
-        positions.Add(transform.position);
-
     }
 
     private void Update()
     {
         currentState.DoUpdate();
+
+        directCastPlayer = !Physics.Raycast(transform.position, (player.position - transform.position).normalized, (player.position - transform.position).magnitude, fow.obstacleMask);
+
     }
 
     private void FixedUpdate()
@@ -81,7 +104,7 @@ public class EnemyStateMachine : MonoBehaviour
 
         for(int i = 1; i < positions.Count; i++)
         {
-            if(PointDistance(positions[nearestIndex]) > PointDistance(positions[i]))
+            if(PointDistance(positions[nearestIndex].position) > PointDistance(positions[i].position))
             {
                 nearestIndex = i;
             }
@@ -91,9 +114,30 @@ public class EnemyStateMachine : MonoBehaviour
 
     }
 
+    public Vector3 GetNextPosition()
+    {
+        posIndex++;
+        if (posIndex < positions.Count)
+            return positions[posIndex].position;
+
+        posIndex = -1;
+        return initialPos;
+
+    }
+
     private float PointDistance(Vector3 point)
     {
         return (point - transform.position).magnitude;
+    }
+
+    IEnumerator AttackRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2);
+            GameObject.Instantiate(bullet, transform.GetChild(0).position, Quaternion.identity).GetComponent<EnemyBullet>().damage = this.damage;
+            AttackRoutine();
+        }
     }
 
 }

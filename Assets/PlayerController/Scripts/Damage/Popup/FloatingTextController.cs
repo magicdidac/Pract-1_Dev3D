@@ -34,4 +34,17 @@ public class FloatingTextController : MonoBehaviour
 
     }
 
+    public static EnemyLifeBar CreateFloatingBar(EnemyDamager damager, Vector3 location)
+    {
+        EnemyLifeBar instance = Instantiate(popupEnemyLifeBar);
+        instance.dmgr = damager;
+
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(location);
+        instance.transform.SetParent(canvas.transform, false);
+        instance.transform.position = screenPosition;
+
+        return instance;
+
+    }
+
 }

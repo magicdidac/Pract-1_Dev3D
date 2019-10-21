@@ -8,13 +8,9 @@ public class Alert_ES : AState
 
     public Alert_ES(EnemyStateMachine self) : base(self)
     {
+        self.agent.isStopped = true;
+        self.agent.ResetPath();
         self.StartCoroutine(Rotate(2));
-
-        self.posIndex--;
-
-        if (self.posIndex < 0)
-            self.posIndex = self.positions.Count - 1;
-
 
     }
 
@@ -57,6 +53,9 @@ public class Alert_ES : AState
 
     public override AState ChangeState()
     {
+        if (self.damager.health <= 0)
+            return new Die_ES(self);
+
         if (self.recievedCritical)
             return new Hit_ES(self, this);
 
