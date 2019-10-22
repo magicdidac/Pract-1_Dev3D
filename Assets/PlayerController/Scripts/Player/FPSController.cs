@@ -39,7 +39,6 @@ public class FPSController : MonoBehaviour
 
     [HideInInspector] public bool haveGun;
     [SerializeField] public Gun gun = null;
-    [HideInInspector] private Animator gunAnim = null;
     [HideInInspector] public DamagerWithShield dmgShield;
     [HideInInspector] public UIController uiController = null;
 
@@ -47,6 +46,7 @@ public class FPSController : MonoBehaviour
 
     [HideInInspector] private InteractableObjectDetection ioDetection;
     [HideInInspector] private TriggerDetection triggerDetection;
+    [HideInInspector] public AnimationController animationController;
 
     private void Start()
     {
@@ -74,10 +74,11 @@ public class FPSController : MonoBehaviour
         controls.Enable();
 
         uiController = GameManager.instance.uiController;
-        gunAnim = gun.GetComponent<Animator>();
         dmgShield = transform.GetChild(0).GetComponent<DamagerWithShield>();
+
         ioDetection = new InteractableObjectDetection(Camera.main, maxActionDistance, this);
         triggerDetection = new TriggerDetection(this);
+        animationController = new AnimationController(gun.GetComponent<Animation>());
 
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -138,11 +139,15 @@ public class FPSController : MonoBehaviour
         verticalSpeed += gravity.y * Time.deltaTime;
         movement.y = verticalSpeed * Time.deltaTime;
 
-        if (gunAnim.isActiveAndEnabled)
+        if (movement.x != 0 || movement.z != 0)
         {
-            gunAnim.SetBool("walk", movement.x != 0 || movement.z != 0);
-            gunAnim.SetBool("run", runInput);
+            if (runInput)
+                animationController.StartAnimation("Run", true);
+            else
+                animationController.StartAnimation("Walk", true);
         }
+        else
+            animationController.StartAnimation("Idle", true);
 
         CollisionFlags collisionFlags = characterController.Move(movement);
 
@@ -163,8 +168,8 @@ public class FPSController : MonoBehaviour
         if (onGround && jumpInput)
         {
             jumpInput = false;
-            if(gunAnim.isActiveAndEnabled)
-                gunAnim.SetTrigger("jump");
+
+            animationController.StartAnimation("Jump",false);
 
             verticalSpeed = m_JumpSpeed;
         }

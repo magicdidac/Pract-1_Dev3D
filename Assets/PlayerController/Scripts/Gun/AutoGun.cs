@@ -15,7 +15,6 @@ public class AutoGun : Gun
 
     public override void Shoot()
     {
-        anim.SetTrigger("shoot");
 
         RaycastHit hit;
 

@@ -35,7 +35,7 @@ public class BitGun : Gun
         if (Time.time < lastTime + cadence)
             return;
 
-        anim.SetTrigger("shoot");
+        player.animationController.StartAnimation("Shoot",false);
 
         RaycastHit hit;
 
@@ -68,7 +68,7 @@ public class BitGun : Gun
 
         reloading = true;
 
-        anim.SetTrigger("reload");
+        player.animationController.StartAnimation("Reload",false);
 
     }
 

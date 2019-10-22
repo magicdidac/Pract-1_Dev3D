@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animation))]
 public abstract class Gun : MonoBehaviour
 {
     [SerializeField] protected int maxAmmo = 200;
@@ -12,7 +12,6 @@ public abstract class Gun : MonoBehaviour
     [HideInInspector] public int ammo;
     [HideInInspector] public int gunAmmo;
     [HideInInspector] protected bool reloading;
-    [HideInInspector] protected Animator anim;
     [SerializeField] protected GameObject particles = null;
     [HideInInspector] protected Transform particlesSpawn;
 
@@ -20,13 +19,17 @@ public abstract class Gun : MonoBehaviour
 
     [SerializeField] private GameObject bulletHoleDecal = null;
 
+    [HideInInspector] protected FPSController player;
+
     protected void Start()
     {
-        anim = GetComponent<Animator>();
+        player = GameManager.instance.player;
         particlesSpawn = transform.GetChild(0);
 
         gunAmmo = maxLoader;
         ammo = maxAmmo/2  - maxLoader;
+
+        player.animationController.StartAnimation("GetIn", false);
     }
 
     public abstract void Shoot();
@@ -40,6 +43,8 @@ public abstract class Gun : MonoBehaviour
         decal.transform.eulerAngles = new Vector3(decal.transform.eulerAngles.x, decal.transform.eulerAngles.y, Random.Range(0f, 359.99f));
 
         SetGlobalScale(decal.transform, decal.transform.localScale);
+
+        DecalGarbage.AddDecal(decal);
 
     }
 

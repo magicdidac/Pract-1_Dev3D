@@ -16,7 +16,7 @@ public class PlatformDetector : MonoBehaviour
 
     public void Move()
     {
-        if(plat.isPlayerRequired)
+        if(plat.isPlayerRequired && (!plat.backToStart || (plat.backToStart && )))
             nextPos = plat.NextPos();
     }
 
