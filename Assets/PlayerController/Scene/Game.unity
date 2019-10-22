@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -22296,7 +22296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6abd7685aabc34ca2f1cdc36ab713c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 8
+  viewRadius: 15
   viewAngle: 100
   targetMask:
     serializedVersion: 2
@@ -22323,8 +22323,8 @@ MonoBehaviour:
   listenPlayer: 0
   seePlayer: 0
   directCastPlayer: 0
-  minChaseDistance: 7
-  maxChaseDistance: 15
+  minChaseDistance: 5
+  maxChaseDistance: 17
   maxAttackDistance: 12
   damage: 30
   bullet: {fileID: 4273673218143470952, guid: 1ef29342115108e47a8c2443ac229b72, type: 3}
@@ -48959,12 +48959,12 @@ PrefabInstance:
     - target: {fileID: 576516395960816004, guid: 00c2d564979a3054aadefe8fe689ccb1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 576516395960816004, guid: 00c2d564979a3054aadefe8fe689ccb1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 117.1
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 576516395960816004, guid: 00c2d564979a3054aadefe8fe689ccb1,
         type: 3}
@@ -67431,7 +67431,7 @@ PrefabInstance:
     - target: {fileID: 8285640915044213181, guid: f47e7c63c953fad4db45ee3041ec7385,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8285640915043794333, guid: f47e7c63c953fad4db45ee3041ec7385,
         type: 3}
