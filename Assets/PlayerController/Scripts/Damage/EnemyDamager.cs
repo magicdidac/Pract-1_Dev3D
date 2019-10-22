@@ -10,6 +10,7 @@ public class EnemyDamager : Damager
     [SerializeField] private GameObject ammoPickable = null;
     [SerializeField] private GameObject healthPickable = null;
     [SerializeField] private GameObject shieldPickable = null;
+    [SerializeField] private GameObject deadParticles = null;
     [SerializeField] private MeshRenderer render = null;
 
     [HideInInspector] private EnemyLifeBar lifeBar = null;
@@ -25,6 +26,8 @@ public class EnemyDamager : Damager
 
     public void Die()
     {
+        Destroy(Instantiate(deadParticles, render.transform.position, Quaternion.identity), .5f);
+
         SpawnPickable(-1, 3, ammoPickable);
         SpawnPickable(1, 2, healthPickable);
         SpawnPickable(-5, 2, shieldPickable);

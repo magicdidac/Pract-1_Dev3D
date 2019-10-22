@@ -22352,6 +22352,8 @@ MonoBehaviour:
     type: 3}
   shieldPickable: {fileID: 6677357374600057310, guid: 9f992d744d81b014aadf0e9fe9ffb312,
     type: 3}
+  deadParticles: {fileID: 7590694832307816134, guid: dfe8f10158b4d164caa1815255e2f916,
+    type: 3}
   render: {fileID: 662016438}
   self: {fileID: 0}
   isDead: 0
@@ -48926,12 +48928,12 @@ PrefabInstance:
     - target: {fileID: 576516395960816004, guid: 00c2d564979a3054aadefe8fe689ccb1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 576516395960816004, guid: 00c2d564979a3054aadefe8fe689ccb1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 152
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 576516395960816004, guid: 00c2d564979a3054aadefe8fe689ccb1,
         type: 3}
