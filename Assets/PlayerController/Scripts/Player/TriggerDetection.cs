@@ -51,7 +51,7 @@ public class TriggerDetection
             PlatformDetector plat = other.GetComponent<PlatformDetector>();
 
             if (plat.BackToStart())
-                plat.Move(Time.time);
+                plat.MoveOverTime();
 
             player.transform.parent = null;
         }

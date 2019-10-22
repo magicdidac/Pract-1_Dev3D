@@ -14,17 +14,15 @@ public class PlatformDetector : MonoBehaviour
         nextPos = (plat.isPlayerRequired)? transform.position : plat.NextPos();
     }
 
-    public void Move(float time)
+    public void MoveOverTime()
     {
-        nextTime = time;
-        Move();
-        
+        Invoke("Move", plat.waitTime);
     }
 
     public void Move()
     {
-        if(plat.isPlayerRequired && (!plat.backToStart || (plat.backToStart && nextTime + plat.waitTime < Time.time)))
-            nextPos = plat.NextPos();
+        if (plat.isPlayerRequired)
+            nextPos = plat.NextPos();        
     }
 
     public bool IsPlayerRequired()

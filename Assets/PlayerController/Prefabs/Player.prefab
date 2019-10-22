@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 576516395960816004}
   - component: {fileID: 576516395960816058}
   - component: {fileID: 576516395960816005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576516397746821163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d939edc51ed46ca4da9e9afd32201153, type: 3}
   m_Name: 
@@ -615,8 +615,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4483862951949018644}
-  - component: {fileID: 4483862951956204020}
   - component: {fileID: 269171466177362964}
+  - component: {fileID: 31861044}
   m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
@@ -640,25 +640,6 @@ Transform:
   m_Father: {fileID: 1982175231415603574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4483862951956204020
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4483862951948925492}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 47debd9033d666b41bbadf28db4af725, type: 3}
-  m_Controller: {fileID: 9100000, guid: 560963c548120dc4bb786ba36db0f3ca, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &269171466177362964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,6 +662,28 @@ MonoBehaviour:
     type: 3}
   bulletHoleDecal: {fileID: 3714122209165257253, guid: cc524eb5dfa4aea428f1373b9524593d,
     type: 3}
+--- !u!111 &31861044
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483862951948925492}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: d8365c942b43525458eb22413b2acaf1, type: 2}
+  - {fileID: 7400000, guid: af67ab18bb43d0445aadd9ce82392360, type: 2}
+  - {fileID: 7400000, guid: 90e0dc9422cf72c40bd8f9693524d0b2, type: 2}
+  - {fileID: 7400000, guid: 9011d018ef585574694af380f553025f, type: 2}
+  - {fileID: 7400000, guid: 1392141e446e21d42a4a9f5ba8756708, type: 2}
+  - {fileID: 7400000, guid: f3a52df73c28eaa42b9403bc0bf89bf7, type: 2}
+  - {fileID: 7400000, guid: b8edab16db3053d459501be0be7fd07d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5649971188051821058
 GameObject:
   m_ObjectHideFlags: 0
