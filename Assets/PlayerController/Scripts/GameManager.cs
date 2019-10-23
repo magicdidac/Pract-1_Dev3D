@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public UIController uiController = null;
     [HideInInspector] public FPSController player = null;
     [HideInInspector] public Checkpoint checkpoint = null;
+    [HideInInspector] public AudioManager audioManager;
+
+    [SerializeField] private GameObject audioSpotPrefab = null;
+    [SerializeField] private List<AudioClip> audios = new List<AudioClip>();
 
     private void Awake()
     {
@@ -20,6 +24,8 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         FloatingTextController.Initialize();
+
+        audioManager = new AudioManager(audioSpotPrefab, audios);
 
     }
 
