@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Gun : MonoBehaviour
 {
     [SerializeField] protected int maxAmmo = 200;
+    [SerializeField] protected int initialAmmo = 100;
     [SerializeField] protected int maxLoader = 8;
     [SerializeField] protected int damage = 15;
     [SerializeField] protected float cadence = 1;
@@ -14,6 +15,7 @@ public abstract class Gun : MonoBehaviour
     [HideInInspector] protected bool reloading;
     [SerializeField] protected GameObject particles = null;
     [HideInInspector] protected Transform particlesSpawn;
+    [HideInInspector] protected Transform cam;
 
     [HideInInspector] protected float lastTime;
 
@@ -21,13 +23,18 @@ public abstract class Gun : MonoBehaviour
 
     [HideInInspector] protected FPSController player;
 
+    [HideInInspector] protected GameManager gm;
+
     protected void Start()
     {
-        player = GameManager.instance.player;
+        gm = GameManager.instance;
+        player = gm.player;
         particlesSpawn = transform.GetChild(0);
+        cam = Camera.main.transform;
 
         gunAmmo = maxLoader;
-        ammo = maxAmmo/2  - maxLoader;
+        ammo = initialAmmo - maxLoader;
+
 
         player.animationController.StartAnimation("GetIn", false);
     }

@@ -27,6 +27,7 @@ public class EnemyDamager : Damager
     public void Die()
     {
         Destroy(Instantiate(deadParticles, render.transform.position, Quaternion.identity), .5f);
+        gm.audioManager.PlaySoundAtPosition("DroneExplosion", transform.position);
 
         SpawnPickable(-1, 3, ammoPickable);
         SpawnPickable(1, 2, healthPickable);

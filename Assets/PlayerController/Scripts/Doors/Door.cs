@@ -24,6 +24,7 @@ public abstract class Door : InteractableObject
 
     public virtual void UseDoor()
     {
+        GameManager.instance.audioManager.PlaySoundAtPosition("Door", transform.position);
         isOpened = !isOpened;
     }
 

@@ -7907,7 +7907,16 @@ MonoBehaviour:
   checkpoint: {fileID: 0}
   audioSpotPrefab: {fileID: 2397419362000281991, guid: 50707483cc10fa74fb03203e155946b4,
     type: 3}
-  audios: []
+  audios:
+  - {fileID: 8300000, guid: c863d39cd14fe8e4492593ca0db2facd, type: 3}
+  - {fileID: 8300000, guid: e6f30bf48cc328248ab9fb406ecb0e5d, type: 3}
+  - {fileID: 8300000, guid: e8083e864495d2546b4f5cbf99852714, type: 3}
+  - {fileID: 8300000, guid: 502312b92d6afa94eb6a17d18b479934, type: 3}
+  - {fileID: 8300000, guid: bc52615a976386843bc5c5fc84051ffd, type: 3}
+  - {fileID: 8300000, guid: 3f359aee5c34e0441ae8c982a034425c, type: 3}
+  - {fileID: 8300000, guid: 9d1677ade0205584da6b5f7a935931e6, type: 3}
+  - {fileID: 8300000, guid: ef445a36c5764a246a62788b5da28742, type: 3}
+  - {fileID: 8300000, guid: e1341c49341980a48837a48f151bc7ad, type: 3}
 --- !u!1 &155347818
 GameObject:
   m_ObjectHideFlags: 0

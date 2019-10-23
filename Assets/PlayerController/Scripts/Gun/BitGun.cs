@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BitGun : Gun
 {
-    [HideInInspector] private Transform cam;
 
     [HideInInspector] private PlayerControls controls;
 
@@ -12,8 +11,6 @@ public class BitGun : Gun
     private new void Start()
     {
         base.Start();
-
-        cam = Camera.main.transform;
 
         controls = transform.parent.parent.parent.GetComponent<FPSController>().controls;
 
@@ -25,6 +22,7 @@ public class BitGun : Gun
     {
         if (gunAmmo <= 0)
         {
+            gm.audioManager.PlaySound("NoAmmoShoot");
             Reload();
             return;
         }
@@ -43,8 +41,6 @@ public class BitGun : Gun
         {
             if (!hit.collider.isTrigger)
             {
-                
-
                 try
                 {
                     hit.collider.GetComponent<DamageZone>().ReviveDamage(damage, hit.point);

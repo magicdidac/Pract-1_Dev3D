@@ -216,7 +216,7 @@ MonoBehaviour:
   m_FastSpeedMultiplier: 1.5
   m_JumpSpeed: 5
   haveGun: 0
-  gun: {fileID: 269171466177362964}
+  gun: {fileID: 4460259000451508788}
   dmgShield: {fileID: 0}
   uiController: {fileID: 0}
   maxActionDistance: 5
@@ -615,8 +615,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4483862951949018644}
-  - component: {fileID: 269171466177362964}
   - component: {fileID: 31861044}
+  - component: {fileID: 4460259000451508788}
   m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
@@ -640,28 +640,6 @@ Transform:
   m_Father: {fileID: 1982175231415603574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &269171466177362964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4483862951948925492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ee614281ba1ffb4db579dc4440e8258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 200
-  maxLoader: 8
-  damage: 15
-  cadence: 0.3
-  ammo: 0
-  gunAmmo: 0
-  particles: {fileID: 6865778392349277798, guid: c751cb73b578b5d4fa18f97a17219b04,
-    type: 3}
-  bulletHoleDecal: {fileID: 3714122209165257253, guid: cc524eb5dfa4aea428f1373b9524593d,
-    type: 3}
 --- !u!111 &31861044
 Animation:
   m_ObjectHideFlags: 0
@@ -684,6 +662,29 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &4460259000451508788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483862951948925492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39230544e8ae21246b93918073f84eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 200
+  initialAmmo: 100
+  maxLoader: 30
+  damage: 15
+  cadence: 0.1
+  ammo: 0
+  gunAmmo: 0
+  particles: {fileID: 6865778392349277798, guid: c751cb73b578b5d4fa18f97a17219b04,
+    type: 3}
+  bulletHoleDecal: {fileID: 3714122209165257253, guid: cc524eb5dfa4aea428f1373b9524593d,
+    type: 3}
 --- !u!1 &5649971188051821058
 GameObject:
   m_ObjectHideFlags: 0

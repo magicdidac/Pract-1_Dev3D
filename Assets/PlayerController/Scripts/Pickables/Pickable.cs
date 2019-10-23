@@ -21,6 +21,7 @@ public abstract class Pickable : InteractableObject
 
     private void GetPickable()
     {
+        gm.audioManager.PlaySound("TakeItem");
         goToPlayer = true;
         triggerCol.enabled = false;
     }

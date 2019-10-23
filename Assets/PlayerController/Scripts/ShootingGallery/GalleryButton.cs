@@ -15,6 +15,7 @@ public class GalleryButton : InteractableObject
 
     public override void Interact()
     {
+        GameManager.instance.audioManager.PlaySoundAtPosition("Activate", transform.position);
         canInteract = false;
         gallery.GalleryStart();
     }
