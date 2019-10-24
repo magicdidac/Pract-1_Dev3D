@@ -10,7 +10,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject healthShieldInfoPanel = null;
     [SerializeField] private GameObject gunInfoPanel = null;
     [SerializeField] private GameObject deadPanel = null;
-    [SerializeField] private Text ammoText = null;
+    [SerializeField] private TMP_Text loaderText = null;
+    [SerializeField] private TMP_Text ammoText = null;
 
     [SerializeField] private Image healthSlider = null;
     [SerializeField] private TMP_Text healthText = null;
@@ -50,7 +51,9 @@ public class UIController : MonoBehaviour
 
     public void SetAmoText(int ammo, int loaderAmmo)
     {
-        ammoText.text = ammo+" / "+loaderAmmo;
+        loaderText.text = "" + ammo;
+
+        ammoText.text = " / "+loaderAmmo;
     }
 
     public void SetActiveGunInfo()
@@ -98,7 +101,7 @@ public class UIController : MonoBehaviour
         healthShieldInfoPanel.SetActive(true);
         deadPanel.SetActive(false);
         if (gm.player.haveGun)
-            gunInfoPanel.SetActive(false);
+            gunInfoPanel.SetActive(true);
 
         gm.Revive();
 

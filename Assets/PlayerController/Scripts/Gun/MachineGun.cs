@@ -45,6 +45,7 @@ public class MachineGun : Gun
 
         InstantiateParticles();
         gm.audioManager.PlaySound("Shoot");
+        player.animationController.StartAnimation("Shoot", false);
 
         lastTime = Time.time;
         gunAmmo--;
