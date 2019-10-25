@@ -52,13 +52,16 @@ public class MachineGun : Gun
 
         RaycastHit hit;
 
-        if(Physics.Raycast(cam.position, cam.forward, out hit))
+        if (Physics.Raycast(cam.position, cam.forward, out hit))
         {
-            try
+            if (!hit.collider.isTrigger)
             {
-                hit.collider.GetComponent<DamageZone>().ReviveDamage(damage, hit.point);
+                try
+                {
+                    hit.collider.GetComponent<DamageZone>().ReviveDamage(damage, hit.point);
+                }
+                catch { InstantiateDecal(hit.point, hit.normal, hit.transform); }
             }
-            catch { InstantiateDecal(hit.point, hit.normal, hit.transform); }
         }
 
     }

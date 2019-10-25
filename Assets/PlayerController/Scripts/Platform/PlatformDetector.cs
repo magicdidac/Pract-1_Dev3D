@@ -22,7 +22,10 @@ public class PlatformDetector : MonoBehaviour
     public void Move()
     {
         if (plat.isPlayerRequired)
-            nextPos = plat.NextPos();        
+        {
+            GameManager.instance.audioManager.PlaySound("Activate");
+            nextPos = plat.NextPos();
+        }
     }
 
     public bool IsPlayerRequired()

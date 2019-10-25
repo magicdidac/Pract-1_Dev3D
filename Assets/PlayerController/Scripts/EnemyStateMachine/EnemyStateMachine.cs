@@ -134,9 +134,9 @@ public class EnemyStateMachine : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(.5f);
             GameObject.Instantiate(bullet, transform.GetChild(0).position, Quaternion.identity).GetComponent<EnemyBullet>().damage = this.damage;
             GameManager.instance.audioManager.PlaySoundAtPosition("DroneShoot", transform.position);
-            yield return new WaitForSeconds(1);
             AttackRoutine();
         }
     }

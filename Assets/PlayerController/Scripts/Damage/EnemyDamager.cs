@@ -21,7 +21,10 @@ public class EnemyDamager : Damager
     public override void GetDamage(int amount)
     {
         health -= amount;
-        self.recievedCritical = true;
+        if (amount != 0)
+            self.recievedCritical = true;
+        else
+            self.recievedDamage = true;
     }
 
     public void Die()

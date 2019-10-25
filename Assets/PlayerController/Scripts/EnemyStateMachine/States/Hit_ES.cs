@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hit_ES : AState
 {
     private AState oldState;
+    private List<Renderer> renderers = null;
 
     public Hit_ES(EnemyStateMachine self, AState oldState) : base(self)
     {
@@ -17,6 +18,18 @@ public class Hit_ES : AState
     {
         self.agent.isStopped = true;
         self.agent.ResetPath();
+
+        renderers = self.dissolveModel.SelectDissolveRenders();
+
+        SetMetallic(.5f);
+    }
+
+    private void SetMetallic(float amount)
+    {
+        foreach (Renderer r in renderers)
+        {
+            r.material.SetFloat("_Metallic", amount);
+        }
     }
 
 
@@ -33,7 +46,7 @@ public class Hit_ES : AState
 
     public override void DoExit()
     {
-        
+        SetMetallic(1);
     }
 
     public override AState ChangeState()
@@ -41,7 +54,7 @@ public class Hit_ES : AState
         if (self.damager.health <= 0)
             return new Die_ES(self);
 
-        if (Time.time - startTime > .5f)
+        if (Time.time - startTime > .25f)
         {
             switch (oldState)
             {

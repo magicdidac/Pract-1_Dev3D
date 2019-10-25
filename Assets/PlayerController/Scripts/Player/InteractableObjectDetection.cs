@@ -46,6 +46,10 @@ public class InteractableObjectDetection
         {
             player.actionInput = false;
             io.Interact();
+        }else if(!io.GetInteractMessage().canInteract && player.actionInput)
+        {
+            player.actionInput = false;
+            gm.audioManager.PlaySound("Error");
         }
 
     }

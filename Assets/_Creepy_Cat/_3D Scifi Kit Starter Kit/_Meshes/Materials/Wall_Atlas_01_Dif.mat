@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wall_Atlas_01_Dif
-  m_Shader: {fileID: 4800000, guid: 149a7345b003e6841ae1d339176afbf2, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
-        m_Texture: {fileID: 2800000, guid: 838cbeebea9624ad2a32825db5c8daf6, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 0.01, y: 0.01}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3323f3e7059c74b949076e89a258789b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 031b98760c04e4e03953e59c1b6fa206, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -78,7 +78,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Gloss: 0
-    - _GlossMapScale: 0.825
+    - _GlossMapScale: 0.84
     - _Glossiness: 0.727
     - _GlossyReflections: 1
     - _Metallic: 0.235
@@ -92,7 +92,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
     - _ColorBlend: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
     - _EmissionColor: {r: 1.7, g: 1.7, b: 1.7, a: 1}
     - _EmissiveBlend: {r: 1, g: 1, b: 1, a: 1}

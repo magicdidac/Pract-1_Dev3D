@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
         if(checkpoint == null)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
             return;
         }
 

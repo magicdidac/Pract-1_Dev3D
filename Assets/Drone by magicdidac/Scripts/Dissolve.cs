@@ -14,7 +14,7 @@ public class Dissolve : MonoBehaviour
 
     private void Awake()
     {
-        renderers = SelectRenderers(gameObject);
+        renderers = SelectDissolveRenders();
     }
 
     private void Update()
@@ -37,6 +37,11 @@ public class Dissolve : MonoBehaviour
         {
             r.material.SetFloat("_Cutoff", cutOffValue);
         }
+    }
+
+    public List<Renderer> SelectDissolveRenders()
+    {
+        return SelectRenderers(gameObject);
     }
 
     private List<Renderer> SelectRenderers(GameObject obj)
