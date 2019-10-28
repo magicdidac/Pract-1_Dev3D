@@ -60,9 +60,9 @@ public class EnemyDamager : Damager
         if (isDead)
             return;
 
-        if (lifeBar == null && render.isVisible && Vector3.Distance(transform.position, gm.player.transform.position) < 15)
+        if (lifeBar == null && self.directCastPlayer && Vector3.Distance(transform.position, gm.player.transform.position) < 15)
             lifeBar = FloatingTextController.CreateFloatingBar(this, transform.position);
-        else if(lifeBar != null && (!render.isVisible || Vector3.Distance(transform.position, gm.player.transform.position) >= 15)){
+        else if(lifeBar != null && (!self.directCastPlayer || Vector3.Distance(transform.position, gm.player.transform.position) >= 15)){
             Destroy(lifeBar.gameObject);
             lifeBar = null;
         }
