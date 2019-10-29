@@ -24,7 +24,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject unableActionInfo = null;
     [SerializeField] private TMP_Text unableActionText = null;
 
-    [SerializeField] private Animator fade = null;
+    [SerializeField] private Animation fade = null;
 
     [HideInInspector] private GameManager gm;
 
@@ -96,7 +96,7 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
 
-        ChangeFade(); //Black
+        Fade(); //Black
 
         healthShieldInfoPanel.SetActive(true);
         deadPanel.SetActive(false);
@@ -107,9 +107,14 @@ public class UIController : MonoBehaviour
 
     }
 
-    public void ChangeFade()
+    public void Fade()
     {
-        fade.SetTrigger("Change");
+        fade.CrossFade("Black", 0);
+    }
+
+    public void UnFade()
+    {
+        fade.CrossFade("Blank", 0);
     }
     
 

@@ -5,7 +5,7 @@ using TMPro;
 
 public class DamagePopup : MonoBehaviour
 {
-    [HideInInspector] private Animator anim;
+    [HideInInspector] private Animation anim;
     [HideInInspector] private TMP_Text damageText;
 
     [HideInInspector] public Vector3 target;
@@ -16,11 +16,10 @@ public class DamagePopup : MonoBehaviour
 
     private void OnEnable()
     {
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = transform.GetChild(0).GetComponent<Animation>();
         player = GameManager.instance.player.transform;
 
-        AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-        Destroy(gameObject, clipInfo[0].clip.length-.01f);
+        Destroy(gameObject, anim.clip.length-.01f);
         damageText = anim.GetComponent<TMP_Text>();
     }
 

@@ -62,7 +62,7 @@ public class Checkpoint : MonoBehaviour
         gm.player.transform.rotation = playerRotation; // Doesn't work
         gm.player.characterController.enabled = true;*/
 
-        gm.uiController.ChangeFade();
+        gm.uiController.UnFade();
     }
 
 }

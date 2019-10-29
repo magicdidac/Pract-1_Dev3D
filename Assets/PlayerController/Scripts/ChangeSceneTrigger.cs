@@ -14,7 +14,7 @@ public class ChangeSceneTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gm.uiController.ChangeFade();
+        gm.uiController.Fade();
 
         SceneManager.LoadSceneAsync(1);
     }

@@ -17,6 +17,7 @@ public class Teleporter : MonoBehaviour
         if (other.GetComponent<FPSController>())
         {
             player.TeleportTo(player.transform.position + teleportOffset);
+            GameManager.instance.ChangeLevel();
         }
     }
 

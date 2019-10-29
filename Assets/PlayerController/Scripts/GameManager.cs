@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject audioSpotPrefab = null;
     [SerializeField] private List<AudioClip> audios = new List<AudioClip>();
 
+    [Space]
+    [SerializeField] private GameObject firstPart = null;
+    [SerializeField] private GameObject secondPart = null;
+
     private void Awake()
     {
         instance = this;
@@ -31,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        uiController.ChangeFade();
+        uiController.UnFade();
     }
 
     public void Revive()
@@ -45,6 +49,12 @@ public class GameManager : MonoBehaviour
 
         checkpoint.SetPlayerStats();
         
+    }
+
+    public void ChangeLevel()
+    {
+        firstPart.SetActive(false);
+        secondPart.SetActive(true);
     }
 
 }

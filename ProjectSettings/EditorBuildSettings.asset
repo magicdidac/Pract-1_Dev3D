@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PlayerController/Scene/Menu.unity
+    path: Assets/PlayerController/Scene/ForestLevel.unity
     guid: 7777a9efacd2a58438231fbcac3ad26b
   - enabled: 1
     path: Assets/PlayerController/Scene/Game.unity

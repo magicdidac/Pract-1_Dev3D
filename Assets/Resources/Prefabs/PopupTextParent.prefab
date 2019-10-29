@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 13243048618545657}
   - component: {fileID: 13243048618545655}
   - component: {fileID: 13243048618545654}
-  - component: {fileID: 13243048618545652}
+  - component: {fileID: 9203961471355327741}
   m_Layer: 5
   m_Name: PopupText
   m_TagString: Untagged
@@ -157,25 +157,21 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!95 &13243048618545652
-Animator:
-  serializedVersion: 3
+--- !u!111 &9203961471355327741
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13243048618545656}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bc4ef6378f46b54891d23e561fda314, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1a6bcc6ae83393c48b0c33fa3ba0a546, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &13243048836558685
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,5 +221,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cade5559f1bd0c4c914f00baa50095b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: 0, z: 0}
